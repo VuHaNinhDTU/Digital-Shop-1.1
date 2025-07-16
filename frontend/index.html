@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chợ Nông Sản Số - Chuyển hướng...</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #4CAF50, #45a049);
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+    .loading {
+      text-align: center;
+    }
+    .spinner {
+      border: 4px solid rgba(255,255,255,0.3);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .clear-btn {
+      background: #fff;
+      color: #4CAF50;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .clear-btn:hover {
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading">
+    <div class="spinner"></div>
+    <h2>Đang chuyển hướng đến trang đăng nhập...</h2>
+    <p>Nếu không tự động chuyển, <a href="/login" style="color: white;">click vào đây</a></p>
+    <button class="clear-btn" onclick="clearServiceWorker()">Clear Cache & Reload</button>
+  </div>
+
+  <script>
+    // Clear Service Worker function
+    async function clearServiceWorker() {
+      if ('serviceWorker' in navigator) {
+        try {
+          // Get all registrations
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          
+          // Unregister all
+          for (let registration of registrations) {
+            await registration.unregister();
+            console.log('✅ Service Worker unregistered:', registration);
+          }
+          
+          // Clear all caches
+          const cacheNames = await caches.keys();
+          for (let name of cacheNames) {
+            await caches.delete(name);
+            console.log('✅ Cache cleared:', name);
+          }
+          
+          console.log('🎉 All Service Workers and caches cleared!');
+          alert('Cache cleared! Reloading...');
+          
+          // Hard reload
+          window.location.reload(true);
+          
+        } catch (error) {
+          console.error('❌ Error clearing Service Worker:', error);
+          alert('Error clearing cache. Please try manual refresh (Ctrl+Shift+R)');
+        }
+      } else {
+        console.log('ℹ️ Service Worker not supported');
+        window.location.reload(true);
+      }
+    }
+    
+    // Auto clear Service Worker on page load if there are errors
+    window.addEventListener('error', (event) => {
+      if (event.message.includes('Service Worker') || event.message.includes('sw.js')) {
+        console.log('🔧 Auto-clearing Service Worker due to error');
+        clearServiceWorker();
+      }
+    });
+    
+    // Always redirect to login page - root URL is login entry point
+    console.log('🔄 Redirecting to login page...');
+    
+    // Immediate redirect to login
+    window.location.replace('/login');
+    
+    // Fallback after 500ms if still on root page
+    setTimeout(() => {
+      if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+        console.log('🔄 Fallback redirect to login triggered');
+        window.location.href = '/login';
+      }
+    }, 500);
+    
+    // Final fallback after 2 seconds
+    setTimeout(() => {
+      if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+        console.log('🔄 Force redirect to login');
+        window.location.assign('/login');
+      }
+    }, 2000);
+  </script>
+</body>
+</html> 

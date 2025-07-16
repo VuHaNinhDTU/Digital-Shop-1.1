@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tài khoản - Chợ Nông Sản Số</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* User page specific styles */
+    .main-container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+      width: 100%;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+    
+    .filter-container {
+      margin-bottom: 20px; 
+      display: flex; 
+      gap: 10px; 
+      flex-wrap: wrap;
+      width: 100%;
+      min-width: 0;
+    }
+    
+    .filter-container select,
+    .filter-container input {
+      padding: 8px 12px; 
+      border: 1px solid #ddd; 
+      border-radius: 6px;
+      min-width: 0;
+      flex: 1;
+      max-width: 200px;
+    }
+    
+    .filter-container button {
+      background: var(--main-green); 
+      color: white; 
+      border: none; 
+      padding: 8px 16px; 
+      border-radius: 6px; 
+      cursor: pointer;
+      white-space: nowrap;
+      min-width: 0;
+    }
+    
+    .filter-container button:last-child {
+      background: #6c757d;
+    }
+    
+    @media (max-width: 768px) {
+      .main-container {
+        padding: 0 15px;
+        margin: 15px auto;
+      }
+      
+      .filter-container {
+        gap: 8px;
+      }
+      
+      .filter-container select,
+      .filter-container input {
+        max-width: 100%;
+        flex: 1 1 auto;
+      }
+      
+      .filter-container button {
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .main-container {
+        margin: 15px auto;
+        padding: 0 12px;
+        gap: 12px;
+      }
+      
+      .filter-container {
+        gap: 8px;
+      }
+      
+      .filter-container select,
+      .filter-container input {
+        max-width: 100%;
+        flex: 1 1 auto;
+      }
+      
+      .filter-container button {
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .main-container {
+        padding: 0 8px;
+      }
+      
+      .filter-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .filter-container select,
+      .filter-container input,
+      .filter-container button {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+    
+    /* Responsive breakpoints */
+    @media (max-width: 900px) {
+      .main-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 0 16px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .main-container {
+        margin: 15px auto;
+        padding: 0 12px;
+        gap: 12px;
+      }
+      
+      .filter-container {
+        gap: 8px;
+      }
+      
+      .filter-container select,
+      .filter-container input {
+        max-width: 100%;
+        flex: 1 1 auto;
+      }
+      
+      .filter-container button {
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .main-container {
+        padding: 0 8px;
+      }
+      
+      .filter-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+      
+      .filter-container select,
+      .filter-container input,
+      .filter-container button {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top text-center">
+      <i class="fa-solid fa-truck-fast"></i> Miễn phí vận chuyển cho đơn hàng từ 500K!
+    </div>
+    <div class="header-main">
+      <div class="header-container">
+        <a href="/home" class="logo"><i class="fa-solid fa-leaf"></i> Chợ Nông Sản Số</a>
+        <div class="search-container">
+          <form class="search-bar">
+            <input type="text" class="search-input" placeholder="Tìm kiếm sản phẩm, danh mục...">
+            <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/home" class="nav-link"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li class="nav-item"><a href="product.html" class="nav-link"><i class="fa fa-box"></i> Sản phẩm</a></li>
+            <li class="nav-item"><a href="order.html" class="nav-link"><i class="fa fa-receipt"></i> Đơn hàng</a></li>
+            <li class="nav-item"><a href="user.html" class="nav-link"><i class="fa fa-user"></i> Tài khoản</a></li>
+            <li class="nav-item"><a href="cart.html" class="nav-link"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+            <li class="nav-item"><a href="add-product.html" class="nav-link" style="background:var(--main-green);color:#fff;border-radius:4px;padding:6px 16px;margin-left:8px;"><i class="fa fa-plus"></i> Bán</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <!-- Sidebar Categories -->
+    <aside class="sidebar">
+      <div class="sidebar-title"><i class="fa fa-list"></i> Danh mục</div>
+      <ul class="category-list">
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-carrot"></i> Rau củ quả</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-apple-whole"></i> Trái cây</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-fish"></i> Thịt cá</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-bacon"></i> Đồ khô</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-star"></i> Đặc sản vùng miền</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-egg"></i> Sữa & Trứng</a></li>
+      </ul>
+    </aside>
+
+    <!-- User Dashboard -->
+    <section style="width:100%;">
+      <!-- User Profile Section -->
+      <div style="background:#fff; border-radius:12px; box-shadow:0 1px 3px rgba(39,174,96,0.08); padding:32px 24px; margin-bottom: 30px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h2 style="color: var(--main-green); font-size: 2rem; margin: 0;"><i class="fa fa-user-circle"></i> Thông tin tài khoản</h2>
+          <button onclick="toggleEditMode()" id="edit-btn" style="background: var(--main-green); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer;">
+            <i class="fa fa-edit"></i> Chỉnh sửa
+          </button>
+        </div>
+        
+        <!-- Display Mode -->
+        <div id="profile-display" style="display: block;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            <div>
+              <div style="font-size:18px; font-weight:600; margin-bottom:12px;" id="display-name">
+                <i class="fa fa-user"></i> Nguyễn Văn A
+              </div>
+              <div style="margin-bottom:8px;" id="display-email">
+                <i class="fa fa-envelope"></i> Email: nguyenvana@email.com
+              </div>
+              <div style="margin-bottom:8px;" id="display-phone">
+                <i class="fa fa-phone"></i> SĐT: 0901234567
+              </div>
+            </div>
+            <div>
+              <div style="margin-bottom:8px;" id="display-address">
+                <i class="fa fa-map-marker-alt"></i> Địa chỉ: 123 Đường ABC, Quận 1, TP.HCM
+              </div>
+              <div style="margin-bottom:8px;">
+                <i class="fa fa-calendar"></i> Ngày tham gia: 01/01/2024
+              </div>
+              <div style="margin-bottom:8px;">
+                <i class="fa fa-shopping-bag"></i> Tổng đơn hàng: <span id="total-orders">0</span>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top: 20px;">
+            <a href="/login" onclick="logout()" style="background:#dc3545; color:#fff; padding:10px 20px; border:none; border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:8px;">
+              <i class="fa fa-sign-out-alt"></i> Đăng xuất
+            </a>
+          </div>
+        </div>
+
+        <!-- Edit Mode -->
+        <div id="profile-edit" style="display: none;">
+          <form id="profile-form" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            <div>
+              <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: 500;">Họ và tên:</label>
+                <input type="text" id="edit-name" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+              </div>
+              <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: 500;">Email:</label>
+                <input type="email" id="edit-email" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+              </div>
+              <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: 500;">Số điện thoại:</label>
+                <input type="tel" id="edit-phone" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+              </div>
+            </div>
+            <div>
+              <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: 500;">Địa chỉ:</label>
+                <textarea id="edit-address" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; resize: vertical;"></textarea>
+              </div>
+              <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px; font-weight: 500;">Ngày sinh:</label>
+                <input type="date" id="edit-birthday" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+              </div>
+            </div>
+          </form>
+          <div style="margin-top: 20px; display: flex; gap: 10px;">
+            <button onclick="saveProfile()" style="background: var(--main-green); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+              <i class="fa fa-save"></i> Lưu thay đổi
+            </button>
+            <button onclick="cancelEdit()" style="background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">
+              <i class="fa fa-times"></i> Hủy
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order History Section -->
+      <div style="background:#fff; border-radius:12px; box-shadow:0 1px 3px rgba(39,174,96,0.08); padding:32px 24px;">
+        <h3 style="color: var(--main-green); font-size: 1.5rem; margin-bottom: 20px;">
+          <i class="fa fa-history"></i> Lịch sử đơn hàng
+        </h3>
+        
+        <!-- Order Filters -->
+        <div class="filter-container">
+          <select id="order-status-filter">
+            <option value="">Tất cả trạng thái</option>
+            <option value="pending">Chờ xác nhận</option>
+            <option value="confirmed">Đã xác nhận</option>
+            <option value="shipping">Đang giao</option>
+            <option value="delivered">Đã giao</option>
+            <option value="cancelled">Đã hủy</option>
+          </select>
+          <input type="date" id="order-date-filter">
+          <button onclick="filterOrders()">
+            <i class="fa fa-filter"></i> Lọc
+          </button>
+          <button onclick="clearFilters()">
+            <i class="fa fa-undo"></i> Xóa bộ lọc
+          </button>
+        </div>
+
+        <!-- Orders List -->
+        <div id="orders-list">
+          <!-- Orders will be loaded here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Về chúng tôi</h3>
+        <ul>
+          <li><a href="#"><i class="fa fa-info-circle"></i> Giới thiệu</a></li>
+          <li><a href="#"><i class="fa fa-phone"></i> Liên hệ</a></li>
+          <li><a href="#"><i class="fa fa-users"></i> Tuyển dụng</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Hỗ trợ khách hàng</h3>
+        <ul>
+          <li><a href="#"><i class="fa fa-undo"></i> Chính sách đổi trả</a></li>
+          <li><a href="#"><i class="fa fa-shield-alt"></i> Chính sách bảo mật</a></li>
+          <li><a href="#"><i class="fa fa-question-circle"></i> Câu hỏi thường gặp</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Kết nối với chúng tôi</h3>
+        <ul>
+          <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+          <li><a href="#"><i class="fab fa-facebook-messenger"></i> Zalo</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Global utilities -->
+  <script src="js/utils.js"></script>
+  
+  <!-- Shopping Cart System -->
+  <script src="js/cart.js?v=2025.1.16"></script>
+  
+  <script>
+    let userProfile = {
+      name: 'Nguyễn Văn A',
+      email: 'nguyenvana@email.com',
+      phone: '0901234567',
+      address: '123 Đường ABC, Quận 1, TP.HCM',
+      birthday: '1990-01-01'
+    };
+    
+    let userOrders = [];
+    
+    // Initialize user page
+    document.addEventListener('DOMContentLoaded', () => {
+      loadUserProfile();
+      loadOrderHistory();
+    });
+
+    // Load user profile data
+    function loadUserProfile() {
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      if (user.name) {
+        userProfile.name = user.name;
+        userProfile.email = user.email || userProfile.email;
+        userProfile.phone = user.phone || userProfile.phone;
+      }
+      updateProfileDisplay();
+    }
+
+    // Update profile display
+    function updateProfileDisplay() {
+      document.getElementById('display-name').innerHTML = `<i class="fa fa-user"></i> ${userProfile.name}`;
+      document.getElementById('display-email').innerHTML = `<i class="fa fa-envelope"></i> Email: ${userProfile.email}`;
+      document.getElementById('display-phone').innerHTML = `<i class="fa fa-phone"></i> SĐT: ${userProfile.phone}`;
+      document.getElementById('display-address').innerHTML = `<i class="fa fa-map-marker-alt"></i> Địa chỉ: ${userProfile.address}`;
+    }
+
+    // Toggle edit mode
+    function toggleEditMode() {
+      const displayDiv = document.getElementById('profile-display');
+      const editDiv = document.getElementById('profile-edit');
+      const editBtn = document.getElementById('edit-btn');
+      
+      if (displayDiv.style.display === 'none') {
+        cancelEdit();
+      } else {
+        // Show edit mode
+        displayDiv.style.display = 'none';
+        editDiv.style.display = 'block';
+        editBtn.innerHTML = '<i class="fa fa-times"></i> Hủy';
+        
+        // Populate edit form
+        document.getElementById('edit-name').value = userProfile.name;
+        document.getElementById('edit-email').value = userProfile.email;
+        document.getElementById('edit-phone').value = userProfile.phone;
+        document.getElementById('edit-address').value = userProfile.address;
+        document.getElementById('edit-birthday').value = userProfile.birthday;
+      }
+    }
+
+    // Cancel edit
+    function cancelEdit() {
+      const displayDiv = document.getElementById('profile-display');
+      const editDiv = document.getElementById('profile-edit');
+      const editBtn = document.getElementById('edit-btn');
+      
+      displayDiv.style.display = 'block';
+      editDiv.style.display = 'none';
+      editBtn.innerHTML = '<i class="fa fa-edit"></i> Chỉnh sửa';
+    }
+
+    // Save profile
+    async function saveProfile() {
+      const updatedProfile = {
+        name: document.getElementById('edit-name').value,
+        email: document.getElementById('edit-email').value,
+        phone: document.getElementById('edit-phone').value,
+        address: document.getElementById('edit-address').value,
+        birthday: document.getElementById('edit-birthday').value
+      };
+      
+      // Validate data
+      if (!updatedProfile.name || !updatedProfile.email || !updatedProfile.phone) {
+        alert('Vui lòng điền đầy đủ thông tin bắt buộc!');
+        return;
+      }
+      
+      try {
+        // In a real app, send to backend
+        userProfile = { ...updatedProfile };
+        updateProfileDisplay();
+        cancelEdit();
+        
+        // Update localStorage
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        user.name = updatedProfile.name;
+        user.email = updatedProfile.email;
+        user.phone = updatedProfile.phone;
+        localStorage.setItem('user', JSON.stringify(user));
+        
+        alert('Cập nhật thông tin thành công!');
+        
+      } catch (error) {
+        console.error('Error saving profile:', error);
+        alert('Có lỗi xảy ra khi lưu thông tin!');
+      }
+    }
+
+    // Load order history
+    async function loadOrderHistory() {
+      try {
+        // Mock order data
+        userOrders = [
+          {
+            id: 'CHO001',
+            date: '2024-01-15',
+            status: 'delivered',
+            total: 250000,
+            items: [
+              { name: 'Cà chua sạch', quantity: 2, price: 50000 },
+              { name: 'Xoài cát Hòa Lộc', quantity: 3, price: 150000 }
+            ]
+          },
+          {
+            id: 'CHO002',
+            date: '2024-01-10',
+            status: 'shipping',
+            total: 180000,
+            items: [
+              { name: 'Thịt heo hữu cơ', quantity: 1, price: 180000 }
+            ]
+          }
+        ];
+        
+        document.getElementById('total-orders').textContent = userOrders.length;
+        renderOrderHistory(userOrders);
+        
+      } catch (error) {
+        console.error('Error loading order history:', error);
+      }
+    }
+
+    // Render order history  
+    function renderOrderHistory(orders) {
+      const container = document.getElementById('orders-list');
+      
+      if (!orders.length) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 40px;">
+            <i class="fa fa-shopping-bag" style="font-size: 48px; color: #ddd; margin-bottom: 15px;"></i>
+            <h4 style="color: #666; margin-bottom: 10px;">Chưa có đơn hàng nào</h4>
+            <p style="color: #999; margin-bottom: 20px;">Hãy bắt đầu mua sắm để tạo đơn hàng đầu tiên!</p>
+            <a href="/home" style="background: var(--main-green); color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px;">
+              <i class="fa fa-shopping-cart"></i> Mua sắm ngay
+            </a>
+          </div>
+        `;
+        return;
+      }
+      
+      const ordersHTML = orders.map(order => `
+        <div style="border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 15px; overflow: hidden;">
+          <div style="background: #f8f9fa; padding: 15px; border-bottom: 1px solid #e0e0e0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+              <div>
+                <strong style="color: #333;">Đơn hàng #${order.id}</strong>
+                <span style="color: #666; margin-left: 15px;">
+                  <i class="fa fa-calendar"></i> ${formatDate(order.date)}
+                </span>
+              </div>
+              <div>
+                <span style="padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500; ${getStatusStyle(order.status)}">
+                  ${getStatusText(order.status)}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div style="padding: 15px;">
+            <div style="margin-bottom: 15px;">
+              ${order.items.map(item => `
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 5px 0;">
+                  <span>${item.name} x${item.quantity}</span>
+                  <span style="font-weight: 500;">${item.price.toLocaleString('vi-VN')}₫</span>
+                </div>
+              `).join('')}
+            </div>
+            <div style="border-top: 1px solid #e0e0e0; padding-top: 15px; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <strong style="color: var(--main-green); font-size: 16px;">
+                  Tổng: ${order.total.toLocaleString('vi-VN')}₫
+                </strong>
+              </div>
+              <div style="display: flex; gap: 10px;">
+                <button onclick="alert('Xem chi tiết đơn hàng ${order.id}')" style="background: var(--main-green); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;">
+                  <i class="fa fa-eye"></i> Chi tiết
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      
+      container.innerHTML = ordersHTML;
+    }
+
+    // Helper functions
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('vi-VN');
+    }
+
+    function getStatusStyle(status) {
+      const styles = {
+        'pending': 'background: #fff3cd; color: #856404;',
+        'confirmed': 'background: #d4edda; color: #155724;',
+        'shipping': 'background: #d1ecf1; color: #0c5460;',
+        'delivered': 'background: #d4edda; color: #155724;',
+        'cancelled': 'background: #f8d7da; color: #721c24;'
+      };
+      return styles[status] || 'background: #e2e3e5; color: #383d41;';
+    }
+
+    function getStatusText(status) {
+      const texts = {
+        'pending': 'Chờ xác nhận',
+        'confirmed': 'Đã xác nhận', 
+        'shipping': 'Đang giao',
+        'delivered': 'Đã giao',
+        'cancelled': 'Đã hủy'
+      };
+      return texts[status] || 'Không xác định';
+    }
+
+    // Filter orders
+    function filterOrders() {
+      const statusFilter = document.getElementById('order-status-filter').value;
+      const dateFilter = document.getElementById('order-date-filter').value;
+      
+      let filteredOrders = [...userOrders];
+      
+      if (statusFilter) {
+        filteredOrders = filteredOrders.filter(order => order.status === statusFilter);
+      }
+      
+      if (dateFilter) {
+        filteredOrders = filteredOrders.filter(order => order.date === dateFilter);
+      }
+      
+      renderOrderHistory(filteredOrders);
+    }
+
+    // Clear filters
+    function clearFilters() {
+      document.getElementById('order-status-filter').value = '';
+      document.getElementById('order-date-filter').value = '';
+      renderOrderHistory(userOrders);
+    }
+
+    // Logout function
+    function logout() {
+      localStorage.removeItem('authToken');
+      sessionStorage.removeItem('authToken');
+      localStorage.removeItem('userRole');
+      sessionStorage.removeItem('userRole');
+      localStorage.removeItem('user');
+      localStorage.removeItem('cho_nong_san_cart');
+      localStorage.removeItem('checkout_cart');
+      window.location.href = '/login';
+    }
+  </script>
+</body>
+</html>

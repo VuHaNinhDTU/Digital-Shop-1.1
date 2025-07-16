@@ -1,0 +1,127 @@
+{
+  "info": {
+    "name": "Blockchain Test Collection",
+    "description": "Test tính năng blockchain trong hệ thống e-commerce nông sản",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Product Blockchain Tests",
+      "item": [
+        {
+          "name": "1. Tạo sản phẩm và ghi blockchain",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Rau cải xanh tươi\",\n  \"price\": 25000,\n  \"category\": \"Rau củ quả\",\n  \"description\": \"Rau cải xanh tươi ngon, không thuốc trừ sâu\",\n  \"unit\": \"kg\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3001/api/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "products"]
+            }
+          }
+        },
+        {
+          "name": "2. Lấy danh sách sản phẩm",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3001/api/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "products"]
+            }
+          }
+        },
+        {
+          "name": "3. Truy xuất nguồn gốc sản phẩm",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3001/api/products/{{product_id}}/trace",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3001",
+              "path": ["api", "products", "{{product_id}}", "trace"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Order Blockchain Tests",
+      "item": [
+        {
+          "name": "1. Tạo đơn hàng và ghi blockchain",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerName\": \"Nguyễn Văn A\",\n  \"customerPhone\": \"0123456789\",\n  \"customerAddress\": \"123 Đường ABC, Quận 1, TP.HCM\",\n  \"items\": [\n    {\n      \"productId\": \"{{product_id}}\",\n      \"quantity\": 2,\n      \"price\": 25000,\n      \"unit\": \"kg\"\n    }\n  ],\n  \"totalAmount\": 50000,\n  \"deliveryDate\": \"2024-01-15\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3004/api/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3004",
+              "path": ["api", "orders"]
+            }
+          }
+        },
+        {
+          "name": "2. Lấy danh sách đơn hàng",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3004/api/orders",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3004",
+              "path": ["api", "orders"]
+            }
+          }
+        },
+        {
+          "name": "3. Truy xuất nguồn gốc đơn hàng",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:3004/api/orders/{{order_id}}/trace",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3004",
+              "path": ["api", "orders", "{{order_id}}", "trace"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "product_id",
+      "value": "YOUR_PRODUCT_ID_HERE"
+    },
+    {
+      "key": "order_id", 
+      "value": "YOUR_ORDER_ID_HERE"
+    }
+  ]
+} 

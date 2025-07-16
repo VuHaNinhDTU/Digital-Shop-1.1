@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' cdnjs.cloudflare.com cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'unsafe-hashes' cdnjs.cloudflare.com cdn.jsdelivr.net; script-src-attr 'unsafe-inline' 'unsafe-hashes'; img-src 'self' data: https: http: blob:; connect-src 'self' ws: wss: http://localhost:3001 http://localhost:3002 http://localhost:3004 https:; worker-src 'self' blob:; child-src 'self' blob:; font-src 'self' data: https:; media-src 'self' data: blob: https:; object-src 'none'; frame-src 'self'">
+  <title>Chợ Nông Sản Số - Đăng bán sản phẩm</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Our JavaScript utilities -->
+  <script src="js/utils.js?v=2025.1.16"></script>
+  <script src="js/api.js?v=2025.1.16"></script>
+  <style>
+    .main-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: 20px auto 0 auto;
+      padding: 0 20px;
+      min-height: 600px;
+      width: 100%;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+    
+    .add-product-wrapper {
+      max-width: 500px;
+      width: 100%;
+      background: #fff;
+      padding: 32px 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      margin: 0 auto;
+    }
+    
+    /* Responsive breakpoints */
+    @media (max-width: 900px) {
+      .main-container {
+        padding: 0 16px;
+      }
+      .add-product-wrapper {
+        padding: 24px 20px;
+        max-width: 450px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .main-container {
+        margin: 15px auto 0 auto;
+        padding: 0 12px;
+      }
+      .add-product-wrapper {
+        padding: 20px 16px;
+        max-width: 100%;
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .main-container {
+        padding: 0 8px;
+      }
+      .add-product-wrapper {
+        padding: 16px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top text-center">
+      <i class="fa-solid fa-truck-fast"></i> Miễn phí vận chuyển cho đơn hàng từ 500K!
+    </div>
+    <div class="header-main">
+      <div class="header-container">
+        <a href="/home" class="logo"><i class="fa-solid fa-leaf"></i> Chợ Nông Sản Số</a>
+        <div class="search-container">
+          <form class="search-bar">
+            <input type="text" class="search-input" placeholder="Tìm kiếm sản phẩm, danh mục...">
+            <button type="submit" class="search-button" title="Tìm kiếm"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/home" class="nav-link"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li class="nav-item"><a href="product.html" class="nav-link"><i class="fa fa-box"></i> Sản phẩm</a></li>
+            <li class="nav-item"><a href="order.html" class="nav-link"><i class="fa fa-receipt"></i> Đơn hàng</a></li>
+            <li class="nav-item"><a href="user.html" class="nav-link"><i class="fa fa-user"></i> Tài khoản</a></li>
+            <li class="nav-item"><a href="cart.html" class="nav-link"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+            <li class="nav-item"><a href="add-product.html" class="nav-link" style="background:var(--main-green);color:#fff;border-radius:4px;padding:6px 16px;margin-left:8px;"><i class="fa fa-plus"></i> Bán</a></li>
+            <li class="nav-item"><a href="/login" class="nav-link logout-btn" onclick="logout()" style="background:#dc3545;color:#fff;border-radius:4px;padding:6px 16px;margin-left:8px;"><i class="fa fa-sign-out-alt"></i> Đăng xuất</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <div class="add-product-wrapper">
+      <form id="add-product-form" enctype="multipart/form-data">
+        <h2 style="text-align:center;margin-bottom:24px;color:var(--main-green);">Đăng bán sản phẩm mới</h2>
+        
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Tên sản phẩm" required class="form-input">
+        </div>
+        
+        <div class="form-group">
+          <input type="number" name="price" placeholder="Giá (VNĐ)" required class="form-input" min="1000">
+        </div>
+        
+        <div class="form-group">
+          <select name="unit" required class="form-input" title="Chọn đơn vị đo">
+            <option value="">Chọn đơn vị</option>
+            <option value="kg">kg</option>
+            <option value="g">g</option>
+            <option value="lít">lít</option>
+            <option value="ml">ml</option>
+            <option value="bó">bó</option>
+            <option value="quả">quả</option>
+            <option value="chai">chai</option>
+            <option value="hộp">hộp</option>
+            <option value="túi">túi</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <select name="category" required class="form-input" title="Chọn danh mục sản phẩm">
+            <option value="">Chọn danh mục</option>
+            <option value="Rau củ quả">Rau củ quả</option>
+            <option value="Trái cây">Trái cây</option>
+            <option value="Thịt cá">Thịt cá</option>
+            <option value="Đồ khô">Đồ khô</option>
+            <option value="Đặc sản vùng miền">Đặc sản vùng miền</option>
+            <option value="Sữa & Trứng">Sữa & Trứng</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <input type="text" name="description" placeholder="Mô tả sản phẩm" class="form-input">
+        </div>
+        <div id="image-preview-list" style="display:flex;gap:8px;margin-bottom:12px;flex-direction:row;align-items:center;"></div>
+        <input type="file" id="image-input" name="images" accept="image/*" multiple style="display:none;">
+        <div id="add-image-btn" style="width:60px;height:60px;display:flex;align-items:center;justify-content:center;border:2px dashed #bbb;border-radius:8px;cursor:pointer;font-size:32px;color:#bbb;margin-bottom:16px;">+</div>
+        <button type="submit" id="submit-btn" class="btn btn-primary" style="width:100%;padding:12px 0;font-size:16px;">
+          <i class="fa fa-upload"></i> Đăng bán
+        </button>
+      </form>
+      <div id="add-product-result" style="text-align:center;margin-top:16px;"></div>
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div id="add-product-modal" style="display:none;position:fixed;z-index:1000;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.18);align-items:center;justify-content:center;">
+    <div style="background:#fff;max-width:380px;margin:auto;padding:32px 24px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.12);text-align:center;">
+      <div id="modal-icon" style="font-size:48px;margin-bottom:12px;"></div>
+      <h2 id="modal-title" style="margin-bottom:8px;"></h2>
+      <div id="modal-message" style="margin-bottom:24px;color:#555;"></div>
+      <button id="btn-add-more" style="background:var(--main-green);color:#fff;padding:8px 20px;border:none;border-radius:4px;font-size:15px;margin-right:10px;cursor:pointer;"><i class="fa-solid fa-plus"></i> Đăng bán tiếp</button>
+      <button id="btn-home" style="background:#eee;color:#222;padding:8px 20px;border:none;border-radius:4px;font-size:15px;cursor:pointer;"><i class="fa-solid fa-house"></i> Về trang chủ</button>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('add-product-form');
+    var imageInput = document.getElementById('image-input');
+    var addImageBtn = document.getElementById('add-image-btn');
+    var previewList = document.getElementById('image-preview-list');
+    var submitBtn = document.getElementById('submit-btn');
+    var imageFiles = [];
+
+    // Form validation setup
+    const inputs = form.querySelectorAll('.form-input');
+    inputs.forEach(input => {
+      input.addEventListener('blur', validateInput);
+      input.addEventListener('input', clearErrors);
+    });
+
+    function validateInput(e) {
+      const input = e.target;
+      const name = input.name;
+      let rules = [];
+
+      switch(name) {
+        case 'name':
+          rules = ['required', {minLength: 3}, {maxLength: 100}];
+          break;
+        case 'price':
+          rules = ['required', 'number'];
+          break;
+        case 'unit':
+        case 'category':
+          rules = ['required'];
+          break;
+        case 'description':
+          rules = [{maxLength: 500}];
+          break;
+      }
+
+      if (rules.length > 0) {
+        FormValidator.validate(input, rules);
+      }
+    }
+
+    function clearErrors(e) {
+      const input = e.target;
+      if (input.classList.contains('error')) {
+        input.classList.remove('error');
+        const errorMsg = input.parentNode.querySelector('.form-error');
+        if (errorMsg) errorMsg.remove();
+      }
+    }
+
+    function renderPreviews() {
+      previewList.innerHTML = '';
+      imageFiles.forEach((file, idx) => {
+        var reader = new FileReader();
+        reader.onload = function(ev) {
+          var img = document.createElement('img');
+          img.src = ev.target.result;
+          img.style.width = '60px';
+          img.style.height = '60px';
+          img.style.objectFit = 'cover';
+          img.style.borderRadius = '8px';
+          img.style.border = '1px solid #eee';
+          img.style.marginRight = '4px';
+          img.title = file.name;
+          // Nút xóa ảnh
+          var delBtn = document.createElement('span');
+          delBtn.innerHTML = '&times;';
+          delBtn.style.position = 'absolute';
+          delBtn.style.right = '2px';
+          delBtn.style.top = '2px';
+          delBtn.style.background = '#fff';
+          delBtn.style.color = '#e74c3c';
+          delBtn.style.borderRadius = '50%';
+          delBtn.style.cursor = 'pointer';
+          delBtn.style.fontSize = '16px';
+          delBtn.onclick = function() {
+            imageFiles.splice(idx, 1);
+            renderPreviews();
+          };
+          var wrapper = document.createElement('div');
+          wrapper.style.position = 'relative';
+          wrapper.style.display = 'inline-block';
+          wrapper.appendChild(img);
+          wrapper.appendChild(delBtn);
+          previewList.appendChild(wrapper);
+        };
+        reader.readAsDataURL(file);
+      });
+      // Hiển thị nút + nếu chưa đủ 5 ảnh
+      if (imageFiles.length < 5) {
+        addImageBtn.style.display = 'flex';
+        previewList.appendChild(addImageBtn);
+      } else {
+        addImageBtn.style.display = 'none';
+      }
+    }
+    addImageBtn.onclick = function() {
+      if (imageFiles.length < 5) imageInput.click();
+    };
+    imageInput.onchange = function(e) {
+      for (let file of e.target.files) {
+        if (imageFiles.length < 5) imageFiles.push(file);
+      }
+      renderPreviews();
+      imageInput.value = '';
+    };
+    form.onsubmit = async function(e) {
+      e.preventDefault();
+      
+      // Validate all inputs
+      let hasErrors = false;
+      inputs.forEach(input => {
+        validateInput({target: input});
+        if (input.classList.contains('error')) {
+          hasErrors = true;
+        }
+      });
+
+      if (hasErrors) {
+        toastManager.warning('Vui lòng kiểm tra và sửa các lỗi trong form');
+        return false;
+      }
+
+      // Check if images are selected
+      if (imageFiles.length === 0) {
+        toastManager.warning('Vui lòng chọn ít nhất 1 hình ảnh sản phẩm');
+        return false;
+      }
+
+      try {
+        setButtonLoading(submitBtn, true);
+        
+        const productData = {
+          name: form.name.value,
+          price: parseFloat(form.price.value),
+          unit: form.unit.value,
+          category: form.category.value,
+          description: form.description.value,
+          images: imageFiles
+        };
+
+        const data = await ApiService.createProduct(productData);
+        
+        if (data.success) {
+          var modal = document.getElementById('add-product-modal');
+          var icon = document.getElementById('modal-icon');
+          var title = document.getElementById('modal-title');
+          var message = document.getElementById('modal-message');
+          
+          icon.innerHTML = '<i class="fa-solid fa-circle-check" style="color:#4bb543;"></i>';
+          title.innerText = 'Đăng bán thành công!';
+          message.innerText = `Sản phẩm "${productData.name}" đã được gửi lên hệ thống và chờ admin duyệt.`;
+          modal.style.display = 'flex';
+          
+          // Reset form
+          form.reset();
+          imageFiles = [];
+          renderPreviews();
+          
+          // Clear validation states
+          inputs.forEach(input => {
+            input.classList.remove('error', 'success');
+            const feedback = input.parentNode.querySelector('.form-error, .form-success');
+            if (feedback) feedback.remove();
+          });
+        }
+      } catch (error) {
+        var modal = document.getElementById('add-product-modal');
+        var icon = document.getElementById('modal-icon');
+        var title = document.getElementById('modal-title');
+        var message = document.getElementById('modal-message');
+        
+        icon.innerHTML = '<i class="fa-solid fa-circle-xmark" style="color:#e74c3c;"></i>';
+        title.innerText = 'Đăng bán thất bại!';
+        message.innerText = error.message || 'Lỗi kết nối server!';
+        modal.style.display = 'flex';
+      } finally {
+        setButtonLoading(submitBtn, false);
+      }
+      
+      return false;
+    };
+    document.getElementById('btn-add-more').onclick = function() {
+      document.getElementById('add-product-modal').style.display = 'none';
+      form.reset();
+      imageFiles = [];
+      renderPreviews();
+    };
+    document.getElementById('btn-home').onclick = function() {
+      window.location.href = '/home';
+    };
+  });
+  </script>
+</body>
+</html> 

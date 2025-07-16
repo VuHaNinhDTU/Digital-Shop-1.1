@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đồ khô - Chợ Nông Sản Số</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .main-container {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 20px auto 0 auto;
+      padding: 0 20px;
+      min-height: 600px;
+      align-items: start;
+      width: 100%;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+    .sidebar {
+      width: 100%;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 24px 0 24px 0;
+      margin: 0;
+      height: auto;
+      align-self: start;
+      position: relative;
+      top: 0;
+    }
+    .products-grid, #product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 28px;
+      width: 100%;
+      background: none;
+      box-shadow: none;
+      margin: 0;
+      padding: 0 18px 0 18px;
+      justify-items: center;
+      justify-content: center;
+    }
+    .product-card {
+      background: #f7f8f9;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 18px 14px 20px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s;
+      width: 100%;
+      min-width: 0;
+      max-width: 260px;
+      box-sizing: border-box;
+    }
+    .product-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
+    .product-name {
+      font-weight: bold;
+      margin-top: 8px;
+      text-align: center;
+    }
+    .product-price {
+      color: var(--main-green);
+      font-size: 18px;
+      margin-top: 4px;
+      text-align: center;
+    }
+    .product-desc {
+      font-size: 14px;
+      color: #888;
+      margin-top: 4px;
+      text-align: center;
+    }
+    .order-btn, .btn-trace {
+      flex: 1;
+      min-width: 0;
+    }
+    @media (max-width: 900px) {
+      .main-container {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .sidebar {
+        width: 100%;
+        margin-bottom: 24px;
+        position: static;
+      }
+      .products-grid, #product-list {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 18px;
+        padding: 0 4vw;
+      }
+    }
+    @media (max-width: 600px) {
+      .products-grid, #product-list {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 0 2vw;
+      }
+      .main-container {
+        margin: 0;
+        padding: 0 2vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-top text-center">
+      <i class="fa-solid fa-truck-fast"></i> Miễn phí vận chuyển cho đơn hàng từ 500K!
+    </div>
+    <div class="header-main">
+      <div class="header-container">
+        <a href="/home" class="logo"><i class="fa-solid fa-leaf"></i> Chợ Nông Sản Số</a>
+        <div class="search-container">
+          <form class="search-bar">
+            <input type="text" class="search-input" placeholder="Tìm kiếm sản phẩm, danh mục...">
+            <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/home" class="nav-link"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li class="nav-item"><a href="product.html" class="nav-link"><i class="fa fa-box"></i> Sản phẩm</a></li>
+            <li class="nav-item"><a href="order.html" class="nav-link"><i class="fa fa-receipt"></i> Đơn hàng</a></li>
+            <li class="nav-item"><a href="user.html" class="nav-link"><i class="fa fa-user"></i> Tài khoản</a></li>
+            <li class="nav-item"><a href="cart.html" class="nav-link"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+            <li class="nav-item"><a href="add-product.html" class="nav-link" style="background:var(--main-green);color:#fff;border-radius:4px;padding:6px 16px;margin-left:8px;"><i class="fa fa-plus"></i> Bán</a></li>
+            <li class="nav-item"><a href="/login" class="nav-link logout-btn" onclick="logout()" style="background:#dc3545;color:#fff;border-radius:4px;padding:6px 16px;margin-left:8px;"><i class="fa fa-sign-out-alt"></i> Đăng xuất</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main class="main-container">
+    <aside class="sidebar">
+      <div class="sidebar-title"><i class="fa fa-list"></i> Danh mục</div>
+      <ul class="category-list">
+        <li class="category-item"><a href="category-rau-cu-qua.html" class="category-link"><i class="fa fa-carrot"></i> Rau củ quả</a></li>
+        <li class="category-item"><a href="category-trai-cay.html" class="category-link"><i class="fa fa-apple-whole"></i> Trái cây</a></li>
+        <li class="category-item"><a href="category-thit-ca.html" class="category-link"><i class="fa fa-fish"></i> Thịt cá</a></li>
+        <li class="category-item"><a href="category-do-kho.html" class="category-link"><i class="fa fa-bacon"></i> Đồ khô</a></li>
+        <li class="category-item"><a href="category-dac-san.html" class="category-link"><i class="fa fa-star"></i> Đặc sản vùng miền</a></li>
+        <li class="category-item"><a href="category-sua-trung.html" class="category-link"><i class="fa fa-egg"></i> Sữa & Trứng</a></li>
+      </ul>
+    </aside>
+    <section style="width:100%;">
+      <h2 class="mb-2" style="color: var(--main-green); font-size: 2rem;">Đồ khô</h2>
+      <div id="product-list" style="background:#fff; border-radius:12px; box-shadow:0 1px 3px rgba(39,174,96,0.08); padding:32px 24px; min-height:120px; text-align:center;">
+        <i class="fa fa-bacon" style="font-size:48px; color:var(--main-green); margin-bottom:12px;"></i>
+        <div style="font-size:20px; color:var(--text-secondary); margin-bottom:8px;">Đang tải sản phẩm...</div>
+      </div>
+    </section>
+  </main>
+  <script>
+    let allProducts = [];
+    function renderProducts() {
+      const list = document.getElementById('product-list');
+      const products = allProducts.filter(p => (p.category || '').trim().toLowerCase() === 'đồ khô'.toLowerCase());
+      if (!products.length) {
+        list.innerHTML = `<div style='font-size:20px; color:var(--text-secondary); margin-bottom:8px;'>Chưa có sản phẩm nào</div>`;
+        return;
+      }
+      list.innerHTML = products.map(product => `
+        <div class='product-card'>
+          <img src='${product.imageUrls && product.imageUrls.length > 0 ? ('http://localhost:3001' + product.imageUrls[0]) : 'https://via.placeholder.com/120x120?text=No+Image'}' alt='${product.name}' class='product-image' style='width:120px;height:120px;object-fit:cover;border-radius:8px;'/>
+          <div class='product-name'>${product.name}</div>
+          <div class='product-price'>${product.price.toLocaleString('vi-VN')}₫${product.unit ? ' / ' + product.unit : ''}</div>
+          <div class='product-desc'>${product.description || ''}</div>
+          <div style='display:flex;gap:8px;margin-top:14px;width:100%;'>
+            <button class='order-btn' style='padding:8px 18px;background:var(--main-green);color:#fff;border:none;border-radius:6px;font-size:15px;cursor:pointer;width:50%;' onclick="window.location.href='/order?id=${product._id}'"><i class='fa fa-shopping-cart'></i> Đặt hàng</button>
+            <button class='btn-trace' style='padding:8px 14px;background:#3498db;color:#fff;border:none;border-radius:6px;font-size:15px;cursor:pointer;width:50%;' onclick="traceProduct('${product._id}')"><i class='fa fa-link'></i> Truy xuất nguồn gốc</button>
+          </div>
+        </div>
+      `).join('');
+    }
+    fetch('http://localhost:3001/api/products')
+      .then(res => res.json())
+      .then(data => {
+        allProducts = data.data || [];
+        renderProducts();
+      })
+      .catch(err => {
+        document.getElementById('product-list').innerHTML = `<div style='color:red;'>Lỗi tải sản phẩm!'</div>`;
+      });
+    function traceProduct(productId) {
+      if (typeof productId === 'string' && productId.startsWith('ObjectId(')) {
+        productId = productId.replace('ObjectId(', '').replace(')', '').replace(/'/g, '');
+      }
+      // ... giữ nguyên code modal truy xuất ...
+    }
+  </script>
+</body>
+</html> 

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo UI/UX Improvements - Chợ Nông Sản Số</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="js/utils.js"></script>
+  <script src="js/api.js"></script>
+  <style>
+    .demo-section {
+      background: var(--background-primary);
+      margin: 20px auto;
+      padding: 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      max-width: 800px;
+    }
+    .demo-title {
+      color: var(--main-green);
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--main-green);
+      padding-bottom: 10px;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .demo-card {
+      padding: 20px;
+      background: var(--background-secondary);
+      border-radius: var(--border-radius);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+    <h1 style="text-align: center; color: var(--main-green); margin-bottom: 40px;">
+      <i class="fa fa-star"></i> UI/UX Improvements Demo
+    </h1>
+
+    <!-- Toast Notifications Demo -->
+    <section class="demo-section">
+      <h2 class="demo-title"><i class="fa fa-bell"></i> Toast Notifications</h2>
+      <p>Hệ thống thông báo toast hiện đại với 4 loại khác nhau:</p>
+      <div class="demo-grid">
+        <button class="btn btn-primary" onclick="toastManager.success('Đặt hàng thành công!', 'Thành công')">
+          <i class="fa fa-check"></i> Success Toast
+        </button>
+        <button class="btn btn-secondary" onclick="toastManager.error('Không thể kết nối server!', 'Lỗi')">
+          <i class="fa fa-times"></i> Error Toast
+        </button>
+        <button class="btn btn-secondary" onclick="toastManager.warning('Vui lòng kiểm tra thông tin!', 'Cảnh báo')">
+          <i class="fa fa-exclamation-triangle"></i> Warning Toast
+        </button>
+        <button class="btn btn-secondary" onclick="toastManager.info('Sản phẩm đã được thêm vào giỏ hàng', 'Thông tin')">
+          <i class="fa fa-info"></i> Info Toast
+        </button>
+      </div>
+    </section>
+
+    <!-- Loading States Demo -->
+    <section class="demo-section">
+      <h2 class="demo-title"><i class="fa fa-spinner"></i> Loading States</h2>
+      <p>Các trạng thái loading và skeleton screens:</p>
+      <div class="demo-grid">
+        <button class="btn btn-primary" onclick="demoLoading()">
+          <i class="fa fa-download"></i> Loading Overlay
+        </button>
+        <button class="btn btn-secondary" onclick="demoButtonLoading(this)">
+          <i class="fa fa-save"></i> Button Loading
+        </button>
+        <div class="demo-card">
+          <h4>Skeleton Card</h4>
+          <div id="skeleton-demo"></div>
+        </div>
+        <div class="demo-card">
+          <h4>Animated Elements</h4>
+          <button class="btn btn-primary" onclick="demoAnimations()">
+            <i class="fa fa-magic"></i> Trigger Animations
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form Validation Demo -->
+    <section class="demo-section">
+      <h2 class="demo-title"><i class="fa fa-check-circle"></i> Form Validation</h2>
+      <p>Validation với visual feedback thời gian thực:</p>
+      <form id="demo-form" style="max-width: 400px;">
+        <div class="form-group">
+          <input type="text" class="form-input" placeholder="Tên sản phẩm (tối thiểu 3 ký tự)" name="name">
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-input" placeholder="Email hợp lệ" name="email">
+        </div>
+        <div class="form-group">
+          <input type="tel" class="form-input" placeholder="Số điện thoại (10-11 chữ số)" name="phone">
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-input" placeholder="Giá (phải > 0)" name="price" min="1">
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">
+          <i class="fa fa-check"></i> Validate Form
+        </button>
+      </form>
+    </section>
+
+    <!-- Image Lazy Loading Demo -->
+    <section class="demo-section">
+      <h2 class="demo-title"><i class="fa fa-image"></i> Lazy Loading Images</h2>
+      <p>Ảnh được tải lazy loading khi scroll vào viewport:</p>
+      <div class="demo-grid">
+        <img data-src="https://picsum.photos/200/150?random=1" class="lazy-image" alt="Demo image 1" style="width: 100%; border-radius: 8px;">
+        <img data-src="https://picsum.photos/200/150?random=2" class="lazy-image" alt="Demo image 2" style="width: 100%; border-radius: 8px;">
+        <img data-src="https://picsum.photos/200/150?random=3" class="lazy-image" alt="Demo image 3" style="width: 100%; border-radius: 8px;">
+        <img data-src="https://picsum.photos/200/150?random=4" class="lazy-image" alt="Demo image 4" style="width: 100%; border-radius: 8px;">
+      </div>
+    </section>
+
+    <!-- Performance & Accessibility -->
+    <section class="demo-section">
+      <h2 class="demo-title"><i class="fa fa-universal-access"></i> Accessibility & Performance</h2>
+      <div class="demo-grid">
+        <div class="demo-card">
+          <h4><i class="fa fa-keyboard"></i> Keyboard Navigation</h4>
+          <p>Tất cả elements có thể navigate bằng Tab</p>
+        </div>
+        <div class="demo-card">
+          <h4><i class="fa fa-eye"></i> Screen Reader</h4>
+          <p>ARIA labels và semantic HTML</p>
+        </div>
+        <div class="demo-card">
+          <h4><i class="fa fa-mobile"></i> Responsive</h4>
+          <p>Tối ưu cho mọi kích thước màn hình</p>
+        </div>
+        <div class="demo-card">
+          <h4><i class="fa fa-tachometer-alt"></i> Performance</h4>
+          <p>Lazy loading, optimized animations</p>
+        </div>
+      </div>
+    </section>
+
+    <div style="text-align: center; margin: 40px 0;">
+      <a href="/home" class="btn btn-primary" style="padding: 15px 30px; font-size: 18px;">
+        <i class="fa fa-home"></i> Quay về trang chủ
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Demo functions
+    function demoLoading() {
+      loadingManager.show('Đang tải dữ liệu demo...');
+      setTimeout(() => {
+        loadingManager.hide();
+        toastManager.success('Tải xong!', 'Demo');
+      }, 2000);
+    }
+
+    function demoButtonLoading(btn) {
+      setButtonLoading(btn, true);
+      setTimeout(() => {
+        setButtonLoading(btn, false);
+        toastManager.success('Xử lý hoàn tất!');
+      }, 3000);
+    }
+
+    function demoAnimations() {
+      const cards = document.querySelectorAll('.demo-card');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          animateElement(card, 'bounce-in');
+        }, index * 200);
+      });
+    }
+
+    // Initialize skeleton demo
+    document.getElementById('skeleton-demo').innerHTML = createProductSkeleton();
+
+    // Form validation demo
+    document.getElementById('demo-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const inputs = this.querySelectorAll('.form-input');
+      let hasErrors = false;
+      
+      inputs.forEach(input => {
+        const name = input.name;
+        let rules = [];
+        
+        switch(name) {
+          case 'name':
+            rules = ['required', {minLength: 3}];
+            break;
+          case 'email':
+            rules = ['required', 'email'];
+            break;
+          case 'phone':
+            rules = ['required', 'phone'];
+            break;
+          case 'price':
+            rules = ['required', 'number'];
+            break;
+        }
+        
+        const errors = FormValidator.validate(input, rules);
+        if (errors.length > 0) hasErrors = true;
+      });
+      
+      if (!hasErrors) {
+        toastManager.success('Form hợp lệ!', 'Validation');
+      } else {
+        toastManager.error('Có lỗi trong form!', 'Validation');
+      }
+    });
+
+    // Setup real-time validation
+    document.querySelectorAll('#demo-form .form-input').forEach(input => {
+      input.addEventListener('blur', function() {
+        const name = this.name;
+        let rules = [];
+        
+        switch(name) {
+          case 'name':
+            rules = ['required', {minLength: 3}];
+            break;
+          case 'email':
+            rules = ['required', 'email'];
+            break;
+          case 'phone':
+            rules = ['required', 'phone'];
+            break;
+          case 'price':
+            rules = ['required', 'number'];
+            break;
+        }
+        
+        if (rules.length > 0) {
+          FormValidator.validate(this, rules);
+        }
+      });
+    });
+
+    // Initialize lazy loading for demo images
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.lazy-image').forEach(img => {
+        lazyImageLoader.observe(img);
+      });
+    });
+  </script>
+</body>
+</html> 

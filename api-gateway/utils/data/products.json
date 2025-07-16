@@ -1,0 +1,100 @@
+[
+  {
+    "_id": "6867036d5f28fd6e92b860fe",
+    "name": "C� chua tuoi ngon d� ch?nh s?a",
+    "price": 35000,
+    "category": "Rau c? qu?",
+    "description": "C� chua tuoi ngon, d� c?p nh?t gi�",
+    "unit": "kg",
+    "imageUrls": [
+      "/uploads/1751581549580-615466202-ca-chua.jpg"
+    ],
+    "status": "active",
+    "createdAt": "2025-07-03T22:25:49.596Z",
+    "updatedAt": "2025-07-03T22:25:49.596Z"
+  },
+  {
+    "_id": "686708376a8909574687f8fd",
+    "name": "Sữa Tươi",
+    "price": 50000,
+    "category": "Sữa & Trứng",
+    "description": "sữa bò nguyên chất",
+    "unit": "lít",
+    "imageUrls": [
+      "/uploads/1751582775099-74933313-sua-tuoi-nguyen-chat.jpg"
+    ],
+    "status": "active",
+    "createdAt": "2025-07-03T22:46:15.105Z",
+    "updatedAt": "2025-07-03T22:46:15.105Z"
+  },
+  {
+    "_id": "6867400d1762c32b68a4cbcb",
+    "name": "thịt heo",
+    "price": 50000,
+    "category": "Thịt cá",
+    "description": "thịt heo ô gan níc",
+    "unit": "kg",
+    "imageUrls": [
+      "/uploads/1751597069957-978529649-thit-heo-huu-co.jpg"
+    ],
+    "status": "active",
+    "createdAt": "2025-07-04T02:44:29.962Z",
+    "updatedAt": "2025-07-04T02:44:29.962Z"
+  },
+  {
+    "_id": "6867402e1762c32b68a4cbd0",
+    "name": "khô cá lóc",
+    "price": 20000,
+    "category": "Đồ khô",
+    "description": "cá",
+    "unit": "g",
+    "imageUrls": [
+      "/uploads/1751597102864-866318552-kho-ca-loc-mien-tay.jpg"
+    ],
+    "status": "active",
+    "createdAt": "2025-07-04T02:45:02.868Z",
+    "updatedAt": "2025-07-04T02:45:02.868Z"
+  },
+  {
+    "_id": "686762433ec5c4189e691235",
+    "name": "xoài cát",
+    "price": 56000,
+    "category": "Trái cây",
+    "description": "xoài",
+    "unit": "kg",
+    "imageUrls": [
+      "/uploads/1751605827235-113295638-xoai-cat-hoa-loc.jpg"
+    ],
+    "status": "active",
+    "createdAt": "2025-07-04T05:10:27.239Z",
+    "updatedAt": "2025-07-04T05:10:27.239Z"
+  },
+  {
+    "_id": "6877aba0eeb526a0c84135b6",
+    "name": "akana",
+    "price": 10000,
+    "category": "Đặc sản vùng miền",
+    "description": "aaa",
+    "unit": "quả",
+    "imageUrls": [
+      "/uploads/1752673184588-511894664-5-tac-dung-cua-ca-tim-doi-voi-suc-khoe-va-cach-chon-mua-ca-tim-ngon-1-800x489.jpg"
+    ],
+    "status": "active",
+    "createdAt": "2025-07-16T13:39:44.600Z",
+    "updatedAt": "2025-07-16T13:39:44.600Z"
+  },
+  {
+    "_id": "6877baa1fbd858f06a9e9b8a",
+    "name": "Phở vippro",
+    "price": 20000,
+    "category": "Đặc sản vùng miền",
+    "description": "ngon",
+    "unit": "túi",
+    "imageUrls": [
+      "/uploads/1752677025298-267642455-phobo-800x450.jpg"
+    ],
+    "status": "active",
+    "createdAt": "2025-07-16T14:43:45.308Z",
+    "updatedAt": "2025-07-16T14:43:45.308Z"
+  }
+]

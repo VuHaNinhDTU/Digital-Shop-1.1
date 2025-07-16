@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sản phẩm - Chợ Nông Sản Số</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .main-container {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 20px auto 0 auto;
+      padding: 0 20px;
+      min-height: 600px;
+      align-items: start;
+      width: 100%;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+    .sidebar {
+      width: 100%;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 24px 0 24px 0;
+      margin: 0;
+      height: auto;
+      align-self: start;
+      position: relative;
+      top: 0;
+      min-width: 0;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      width: 100%;
+      background: none;
+      box-shadow: none;
+      margin: 0;
+      padding: 0;
+      justify-items: center;
+      justify-content: center;
+      min-width: 0;
+    }
+    .product-list {
+      display: contents;
+    }
+    .product-card {
+      background: #f7f8f9;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 18px 14px 20px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s;
+      width: 100%;
+      min-width: 0;
+      max-width: 320px;
+    }
+    .product-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    }
+    .product-name {
+      font-weight: bold;
+      margin-top: 8px;
+      text-align: center;
+    }
+    .product-price {
+      color: var(--main-green);
+      font-size: 18px;
+      margin-top: 4px;
+      text-align: center;
+    }
+    .product-desc {
+      font-size: 14px;
+      color: #888;
+      margin-top: 4px;
+      text-align: center;
+    }
+    .order-btn, .btn-trace {
+      flex: 1;
+      min-width: 0;
+    }
+    @media (max-width: 900px) {
+      .main-container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 0 16px;
+      }
+      .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+        position: static;
+      }
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 16px;
+      }
+    }
+    @media (max-width: 600px) {
+      .main-container {
+        margin: 15px auto 0 auto;
+        padding: 0 12px;
+        gap: 12px;
+      }
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 12px;
+      }
+    }
+    @media (max-width: 400px) {
+      .main-container {
+        padding: 0 8px;
+      }
+      .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top text-center">
+      <i class="fa-solid fa-truck-fast"></i> Miễn phí vận chuyển cho đơn hàng từ 500K!
+    </div>
+    <div class="header-main">
+      <div class="header-container">
+        <a href="/home" class="logo"><i class="fa-solid fa-leaf"></i> Chợ Nông Sản Số</a>
+        <div class="search-container">
+          <form class="search-bar">
+            <input type="text" class="search-input" placeholder="Tìm kiếm sản phẩm, danh mục...">
+            <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/home" class="nav-link"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li class="nav-item"><a href="product.html" class="nav-link"><i class="fa fa-box"></i> Sản phẩm</a></li>
+            <li class="nav-item"><a href="order.html" class="nav-link"><i class="fa fa-receipt"></i> Đơn hàng</a></li>
+            <li class="nav-item"><a href="user.html" class="nav-link"><i class="fa fa-user"></i> Tài khoản</a></li>
+            <li class="nav-item"><a href="cart.html" class="nav-link"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+            <li class="nav-item"><a href="add-product.html" class="nav-link" style="background:var(--main-green);color:#fff;border-radius:4px;padding:6px 16px;margin-left:8px;"><i class="fa fa-plus"></i> Bán</a></li>
+            <li class="nav-item"><a href="/login" class="nav-link logout-btn" onclick="logout()" style="background:#dc3545;color:#fff;border-radius:4px;padding:6px 16px;margin-left:8px;"><i class="fa fa-sign-out-alt"></i> Đăng xuất</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <!-- Sidebar Categories -->
+    <aside class="sidebar">
+      <div class="sidebar-title"><i class="fa fa-list"></i> Danh mục</div>
+      <ul class="category-list">
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-carrot"></i> Rau củ quả</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-apple-whole"></i> Trái cây</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-fish"></i> Thịt cá</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-bacon"></i> Đồ khô</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-star"></i> Đặc sản vùng miền</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-egg"></i> Sữa & Trứng</a></li>
+      </ul>
+    </aside>
+
+    <!-- Products Grid -->
+    <section class="products-grid" id="products-grid">
+      <h2 id="product-title" class="mb-2" style="grid-column: 1/-1; color: var(--main-green); font-size: 2rem;">Sản phẩm nổi bật</h2>
+      <!-- Các product-card sẽ được render trực tiếp ở đây bằng JS -->
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Về chúng tôi</h3>
+        <ul>
+          <li><a href="#"><i class="fa fa-info-circle"></i> Giới thiệu</a></li>
+          <li><a href="#"><i class="fa fa-phone"></i> Liên hệ</a></li>
+          <li><a href="#"><i class="fa fa-users"></i> Tuyển dụng</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Hỗ trợ khách hàng</h3>
+        <ul>
+          <li><a href="#"><i class="fa fa-undo"></i> Chính sách đổi trả</a></li>
+          <li><a href="#"><i class="fa fa-shield-alt"></i> Chính sách bảo mật</a></li>
+          <li><a href="#"><i class="fa fa-question-circle"></i> Câu hỏi thường gặp</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Kết nối với chúng tôi</h3>
+        <ul>
+          <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+          <li><a href="#"><i class="fab fa-facebook-messenger"></i> Zalo</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Trace Modal -->
+  <div id="trace-modal" class="modal" style="display:none;">
+    <div class="modal-content" id="trace-modal-content">
+      <!-- Nội dung sẽ được JS render -->
+    </div>
+  </div>
+
+  <script>
+    const CATEGORIES = [
+      { key: '', label: 'Sản phẩm nổi bật', icon: '' },
+      { key: 'Rau củ quả', label: 'Rau củ quả', icon: 'fa fa-carrot' },
+      { key: 'Trái cây', label: 'Trái cây', icon: 'fa fa-apple-whole' },
+      { key: 'Thịt cá', label: 'Thịt cá', icon: 'fa fa-fish' },
+      { key: 'Đồ khô', label: 'Đồ khô', icon: 'fa fa-bacon' },
+      { key: 'Đặc sản vùng miền', label: 'Đặc sản vùng miền', icon: 'fa fa-star' },
+      { key: 'Sữa & Trứng', label: 'Sữa & Trứng', icon: 'fa fa-egg' }
+    ];
+    let allProducts = [];
+    let currentCategory = '';
+
+    function orderProduct(productId) {
+      window.location.href = `/order?id=${productId}`;
+    }
+
+    function traceProduct(productId) {
+      // Loại bỏ tiền tố nếu có
+      if (typeof productId === 'string' && productId.startsWith('ObjectId(')) {
+        productId = productId.replace('ObjectId(', '').replace(')', '').replace(/'/g, '');
+      }
+      // Hiển thị loading
+      const modal = document.getElementById('trace-modal');
+      const modalContent = document.getElementById('trace-modal-content');
+      modalContent.innerHTML = '<div style="text-align:center;padding:20px;"><i class="fa fa-spinner fa-spin" style="font-size:24px;color:var(--main-green);"></i><p>Đang tải thông tin truy xuất nguồn gốc...</p></div>';
+      modal.style.display = 'flex';
+      
+      // Gọi API truy xuất nguồn gốc
+      fetch(`http://localhost:3001/api/products/${productId}/trace`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.success && data.data) {
+            const trace = data.data.trace;
+            modalContent.innerHTML = `
+              <div class="trace-header">
+                <h3><i class="fa fa-link"></i> Truy xuất nguồn gốc sản phẩm</h3>
+                <button onclick="closeTraceModal()" class="close-btn">&times;</button>
+              </div>
+              <div class="trace-info">
+                <div class="trace-item">
+                  <strong>Tên sản phẩm:</strong> ${trace.productName}
+                </div>
+                <div class="trace-item">
+                  <strong>Danh mục:</strong> ${trace.category}
+                </div>
+                <div class="trace-item">
+                  <strong>Giá:</strong> ${trace.price.toLocaleString('vi-VN')} VNĐ/${trace.unit}
+                </div>
+                <div class="trace-item">
+                  <strong>Blockchain Hash:</strong> <span style="font-family:monospace;font-size:12px;">${trace.blockchainHash}</span>
+                </div>
+                <div class="trace-item">
+                  <strong>Thời gian tạo:</strong> ${new Date(trace.timestamp).toLocaleString('vi-VN')}
+                </div>
+              </div>
+              <div class="supply-chain">
+                <h4><i class="fa fa-route"></i> Chuỗi cung ứng</h4>
+                ${trace.supplyChain.map((step, index) => `
+                  <div class="supply-step">
+                    <div class="step-number">${index + 1}</div>
+                    <div class="step-info">
+                      <div class="step-title">${step.step}</div>
+                      <div class="step-location">${step.location}</div>
+                      <div class="step-description">${step.description}</div>
+                      <div class="step-time">${new Date(step.timestamp).toLocaleString('vi-VN')}</div>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            `;
+          } else {
+            modalContent.innerHTML = `
+              <div class="trace-header">
+                <h3><i class="fa fa-exclamation-triangle"></i> Lỗi truy xuất</h3>
+                <button onclick="closeTraceModal()" class="close-btn">&times;</button>
+              </div>
+              <div style="text-align:center;padding:20px;color:#e74c3c;">
+                <p>Không thể tải thông tin truy xuất nguồn gốc!</p>
+                <p>${data.message || 'Vui lòng thử lại sau.'}</p>
+              </div>
+            `;
+          }
+        })
+        .catch(error => {
+          modalContent.innerHTML = `
+            <div class="trace-header">
+              <h3><i class="fa fa-exclamation-triangle"></i> Lỗi kết nối</h3>
+              <button onclick="closeTraceModal()" class="close-btn">&times;</button>
+            </div>
+            <div style="text-align:center;padding:20px;color:#e74c3c;">
+              <p>Lỗi kết nối server!</p>
+              <p>Vui lòng kiểm tra kết nối và thử lại.</p>
+            </div>
+          `;
+        });
+    }
+
+    function closeTraceModal() {
+      document.getElementById('trace-modal').style.display = 'none';
+    }
+
+    // Render sidebar danh mục
+    function renderSidebar() {
+      const sidebar = document.querySelector('.sidebar .category-list');
+      sidebar.innerHTML = CATEGORIES.slice(1).map(cat => `
+        <li class="category-item">
+          <a href="#" class="category-link${currentCategory === cat.key ? ' active' : ''}" data-category="${cat.key}">
+            <i class="${cat.icon}"></i> ${cat.label}
+          </a>
+        </li>
+      `).join('');
+      // Gắn sự kiện click
+      document.querySelectorAll('.category-link').forEach(link => {
+        link.onclick = function(e) {
+          e.preventDefault();
+          currentCategory = this.getAttribute('data-category');
+          renderSidebar();
+          renderProducts();
+        };
+      });
+    }
+
+    // Render sản phẩm theo danh mục
+    function renderProducts() {
+      const grid = document.getElementById('products-grid');
+      const title = document.getElementById('product-title');
+      let products = allProducts;
+      let catObj = CATEGORIES.find(c => c.key === currentCategory);
+      if (currentCategory) {
+        // Debug: log dữ liệu để kiểm tra
+        console.log('allProducts:', allProducts);
+        console.log('currentCategory:', currentCategory);
+        products = allProducts.filter(p => (p.category || '').trim().toLowerCase() === currentCategory.trim().toLowerCase());
+        console.log('filtered:', products);
+        title.textContent = catObj ? catObj.label : 'Sản phẩm';
+      } else {
+        title.textContent = 'Sản phẩm nổi bật';
+      }
+      // Xóa hết các product-card cũ
+      Array.from(grid.querySelectorAll('.product-card, .empty-category')).forEach(e => e.remove());
+      if (!products.length) {
+        // Hiện thông báo đẹp nếu không có sản phẩm
+        grid.insertAdjacentHTML('beforeend', `
+          <div class="empty-category" style="grid-column: 1/-1; background:#fff; border-radius:16px; min-height:140px; display:flex;align-items:center;justify-content:center;gap:18px; font-size:20px; color:#666; margin-top:24px;">
+            <div style="font-size:38px;color:var(--main-green);"><i class="${catObj && catObj.icon ? catObj.icon : 'fa fa-box'}"></i></div>
+            <div>Chưa có sản phẩm trong danh mục này</div>
+          </div>
+        `);
+        return;
+      }
+      products.forEach(product => {
+        grid.insertAdjacentHTML('beforeend', `
+          <div class='product-card'>
+            <img src='${product.imageUrls && product.imageUrls.length > 0 ? ('http://localhost:3001' + product.imageUrls[0]) : 'https://via.placeholder.com/120x120?text=No+Image'}' alt='${product.name}' class='product-image' style='width:120px;height:120px;object-fit:cover;border-radius:8px;'/>
+            <div class='product-name'>${product.name}</div>
+            <div class='product-price'>${product.price.toLocaleString('vi-VN')}₫${product.unit ? ' / ' + product.unit : ''}</div>
+            <div class='product-desc'>${product.description || ''}</div>
+            <div style='display:flex;gap:8px;margin-top:14px;width:100%;'>
+              <button class='add-to-cart-btn' style='padding:8px 14px;background:var(--main-green);color:#fff;border:none;border-radius:6px;font-size:15px;cursor:pointer;width:50%;' onclick="addProductToCart('${product._id}')"><i class='fa fa-cart-plus'></i> Thêm vào giỏ</button>
+              <button class='btn-trace' style='padding:8px 14px;background:#3498db;color:#fff;border:none;border-radius:6px;font-size:15px;cursor:pointer;width:50%;' onclick="traceProduct('${product._id}')"><i class='fa fa-link'></i> Truy xuất</button>
+            </div>
+          </div>
+        `);
+      });
+    }
+
+    // Fetch sản phẩm và render lần đầu
+    fetch('http://localhost:3001/api/products')
+      .then(res => res.json())
+      .then(data => {
+        allProducts = data.data || [];
+        renderSidebar();
+        renderProducts();
+      })
+      .catch(err => {
+        document.getElementById('products-grid').innerHTML = `<div style='color:red;'>Lỗi tải sản phẩm!</div>`;
+      });
+
+    // Add to cart functionality
+    async function addProductToCart(productId) {
+      try {
+        const response = await fetch(`http://localhost:3001/api/products/${productId}`);
+        const result = await response.json();
+        
+        if (result.success && result.data) {
+          addToCart(result.data);
+        } else {
+          alert('Không thể thêm sản phẩm vào giỏ hàng!');
+        }
+      } catch (error) {
+        console.error('Add to cart error:', error);
+        alert('Có lỗi xảy ra khi thêm vào giỏ hàng!');
+      }
+    }
+  </script>
+  
+  <!-- Shopping Cart System -->
+  <script src="js/cart.js?v=2025.1.16"></script>
+</body>
+</html>

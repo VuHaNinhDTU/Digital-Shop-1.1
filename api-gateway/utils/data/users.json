@@ -1,0 +1,10 @@
+[
+  {
+    "_id": "6866e70166e209b6185da9bf",
+    "username": "testuser",
+    "email": "test@example.com",
+    "role": "user",
+    "createdAt": "2025-07-03T20:24:33.235Z",
+    "updatedAt": "2025-07-03T20:24:33.235Z"
+  }
+]

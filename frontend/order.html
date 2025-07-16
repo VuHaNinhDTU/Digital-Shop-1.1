@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' cdnjs.cloudflare.com cdn.jsdelivr.net; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'unsafe-hashes' cdnjs.cloudflare.com cdn.jsdelivr.net; script-src-attr 'unsafe-inline' 'unsafe-hashes'; img-src 'self' data: https: http: blob:; connect-src 'self' ws: wss: http://localhost:3001 http://localhost:3002 http://localhost:3004 https:; worker-src 'self' blob:; child-src 'self' blob:; font-src 'self' data: https:; media-src 'self' data: blob: https:; object-src 'none'; frame-src 'self'">
+  <title>Đơn hàng - Chợ Nông Sản Số</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-top text-center">
+      <i class="fa-solid fa-truck-fast"></i> Miễn phí vận chuyển cho đơn hàng từ 500K!
+    </div>
+    <div class="header-main">
+      <div class="header-container">
+        <a href="/home" class="logo"><i class="fa-solid fa-leaf"></i> Chợ Nông Sản Số</a>
+        <div class="search-container">
+          <form class="search-bar">
+            <input type="text" class="search-input" placeholder="Tìm kiếm sản phẩm, danh mục...">
+            <button type="submit" class="search-button" title="Tìm kiếm"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-item"><a href="/home" class="nav-link"><i class="fa fa-home"></i> Trang chủ</a></li>
+            <li class="nav-item"><a href="product.html" class="nav-link"><i class="fa fa-box"></i> Sản phẩm</a></li>
+            <li class="nav-item"><a href="order.html" class="nav-link"><i class="fa fa-receipt"></i> Đơn hàng</a></li>
+            <li class="nav-item"><a href="user.html" class="nav-link"><i class="fa fa-user"></i> Tài khoản</a></li>
+            <li class="nav-item"><a href="cart.html" class="nav-link"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+            <li class="nav-item"><a href="add-product.html" class="nav-link" style="background:var(--main-green);color:#fff;border-radius:4px;padding:6px 16px;margin-left:8px;"><i class="fa fa-plus"></i> Bán</a></li>
+            <li class="nav-item"><a href="/login" class="nav-link logout-btn" onclick="logout()" style="background:#dc3545;color:#fff;border-radius:4px;padding:6px 16px;margin-left:8px;"><i class="fa fa-sign-out-alt"></i> Đăng xuất</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <!-- Sidebar Categories -->
+    <aside class="sidebar">
+      <div class="sidebar-title"><i class="fa fa-list"></i> Danh mục</div>
+      <ul class="category-list">
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-carrot"></i> Rau củ quả</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-apple-whole"></i> Trái cây</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-fish"></i> Thịt cá</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-bacon"></i> Đồ khô</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-star"></i> Đặc sản vùng miền</a></li>
+        <li class="category-item"><a href="#" class="category-link"><i class="fa fa-egg"></i> Sữa & Trứng</a></li>
+      </ul>
+    </aside>
+
+    <!-- Orders Table -->
+    <section style="width:100%;">
+      <h2 class="mb-2" style="color: var(--main-green); font-size: 2rem;">Đơn hàng của bạn</h2>
+      <div style="overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; background:#fff; border-radius:12px; box-shadow:0 1px 3px rgba(39,174,96,0.08);">
+          <thead style="background:var(--main-green); color:#fff;">
+            <tr>
+              <th style="padding:12px;">Mã đơn</th>
+              <th style="padding:12px;">Ngày đặt</th>
+              <th style="padding:12px;">Sản phẩm</th>
+              <th style="padding:12px;">Số lượng</th>
+              <th style="padding:12px;">Tổng tiền</th>
+              <th style="padding:12px;">Trạng thái</th>
+              <th style="padding:12px;">Ngày giao hàng</th>
+              <th style="padding:12px;">Truy xuất</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:10px; text-align:center;">#1001</td>
+              <td style="padding:10px; text-align:center;">2025-07-04</td>
+              <td style="padding:10px;">Xoài cát Hòa Lộc (2kg), Cà chua Đà Lạt (1kg)</td>
+              <td style="padding:10px; text-align:center;">2kg, 1kg</td>
+              <td style="padding:10px; color:var(--main-green); font-weight:bold; text-align:right;">115.000đ</td>
+              <td style="padding:10px; text-align:center;"><span style="background:var(--accent-green); color:#222; border-radius:6px; padding:4px 10px; font-size:13px;">Đang giao</span></td>
+              <td style="padding:10px; text-align:center;">${order.deliveryDate ? (new Date(order.deliveryDate).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: '2-digit' })) : ''}</td>
+              <td style="padding:10px; text-align:center;">
+                <button onclick="traceOrder('${order._id}')" style="background:#3498db;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;font-size:12px;">
+                  <i class="fa fa-link"></i> Truy xuất
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding:10px; text-align:center;">#1000</td>
+              <td style="padding:10px; text-align:center;">2025-07-01</td>
+              <td style="padding:10px;">Khô cá lóc miền Tây (0.5kg)</td>
+              <td style="padding:10px; text-align:center;">0.5kg</td>
+              <td style="padding:10px; color:var(--main-green); font-weight:bold; text-align:right;">90.000đ</td>
+              <td style="padding:10px; text-align:center;"><span style="background:#eee; color:#666; border-radius:6px; padding:4px 10px; font-size:13px;">Đã nhận</span></td>
+              <td style="padding:10px; text-align:center;">${order.deliveryDate ? (new Date(order.deliveryDate).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: '2-digit' })) : ''}</td>
+              <td style="padding:10px; text-align:center;">
+                <button onclick="traceOrder('${order._id}')" style="background:#3498db;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;font-size:12px;">
+                  <i class="fa fa-link"></i> Truy xuất
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Về chúng tôi</h3>
+        <ul>
+          <li><a href="#"><i class="fa fa-info-circle"></i> Giới thiệu</a></li>
+          <li><a href="#"><i class="fa fa-phone"></i> Liên hệ</a></li>
+          <li><a href="#"><i class="fa fa-users"></i> Tuyển dụng</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Hỗ trợ khách hàng</h3>
+        <ul>
+          <li><a href="#"><i class="fa fa-undo"></i> Chính sách đổi trả</a></li>
+          <li><a href="#"><i class="fa fa-shield-alt"></i> Chính sách bảo mật</a></li>
+          <li><a href="#"><i class="fa fa-question-circle"></i> Câu hỏi thường gặp</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Kết nối với chúng tôi</h3>
+        <ul>
+          <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+          <li><a href="#"><i class="fab fa-facebook-messenger"></i> Zalo</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Trace Modal -->
+  <div id="trace-modal" class="modal">
+    <div class="modal-content" id="trace-modal-content">
+      <!-- Nội dung sẽ được JS render -->
+    </div>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script>
+  function getQueryParam(name) {
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name);
+  }
+  const productId = getQueryParam('id');
+  const main = document.querySelector('.main-container');
+  if (productId) {
+    // Xóa sidebar nếu có
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar) sidebar.style.display = 'none';
+    // Xóa tiêu đề nếu có
+    const h2 = main.querySelector('h2');
+    if (h2) h2.style.display = 'none';
+    // Xóa bảng đơn hàng nếu có
+    const table = main.querySelector('table');
+    if (table) table.style.display = 'none';
+    // Hiển thị form đặt hàng cho sản phẩm cụ thể
+    Promise.all([
+      fetch(`http://localhost:3001/api/products/${productId}`).then(res => res.json()),
+      fetch(`http://localhost:3001/api/products/${productId}/trace`).then(res => res.json())
+    ]).then(([productRes, traceRes]) => {
+      const product = productRes.data;
+      const trace = traceRes && traceRes.success && traceRes.data && traceRes.data.trace ? traceRes.data.trace : null;
+      if (!product) {
+        main.innerHTML = `<div style='color:red;font-size:20px;margin:32px;'>Không tìm thấy sản phẩm!</div>`;
+        return;
+      }
+      main.innerHTML = `
+        <section class="order-form-section" style="max-width: 420px; margin: 48px auto; background: #fff; padding: 40px 36px; border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.12); display: flex; flex-direction: column; align-items: center;">
+          <h2 style="color:var(--main-green);font-size:2.2rem;text-align:center;margin-bottom:22px;">Đặt hàng</h2>
+          <div style="display:flex;gap:22px;align-items:center;margin-bottom:22px;">
+            <img src='${product.imageUrls && product.imageUrls.length > 0 ? ('http://localhost:3001' + product.imageUrls[0]) : 'https://via.placeholder.com/120x120?text=No+Image'}' style="width:120px;height:120px;object-fit:cover;border-radius:12px;"/>
+            <div>
+              <div style="font-weight:bold;font-size:22px;">${product.name}</div>
+              <div style="color:var(--main-green);font-size:20px;">${product.price}₫${product.unit ? ' / ' + product.unit : ''}</div>
+              <div style="font-size:15px;color:#888;">${product.description || ''}</div>
+            </div>
+          </div>
+          <form id="order-form" style="width:100%;max-width:340px;">
+            <input type="number" name="quantity" min="1" value="1" required placeholder="Số lượng" style="width:100%;margin-bottom:14px;padding:10px 14px;font-size:16px;">
+            <input type="text" name="customerName" required placeholder="Họ tên người nhận" style="width:100%;margin-bottom:14px;padding:10px 14px;font-size:16px;">
+            <input type="tel" name="phone" required placeholder="Số điện thoại" style="width:100%;margin-bottom:14px;padding:10px 14px;font-size:16px;">
+            <input type="text" name="address" required placeholder="Địa chỉ nhận hàng" style="width:100%;margin-bottom:14px;padding:10px 14px;font-size:16px;">
+            <input type="date" name="deliveryDate" required placeholder="dd/mm/yyyy" style="width:100%;margin-bottom:18px;padding:10px 14px;font-size:16px;">
+            <div style="font-size:18px;margin-bottom:18px;">Tổng tiền: <span id="total-price" style="color:var(--main-green);font-weight:bold;">${product.price}₫</span></div>
+            <button type="submit" style="width:100%;background:var(--main-green);color:#fff;padding:14px 0;border:none;border-radius:7px;font-size:18px;">Xác nhận đặt hàng</button>
+          </form>
+          <div id="order-result" style="text-align:center;margin-top:18px;"></div>
+        </section>
+      `;
+      // Tổng tiền động
+      const quantityInput = document.querySelector('input[name="quantity"]');
+      const totalPrice = document.getElementById('total-price');
+      quantityInput.addEventListener('input', function() {
+        let qty = parseInt(this.value) || 1;
+        if (qty < 1) qty = 1;
+        totalPrice.textContent = (qty * product.price).toLocaleString() + '₫';
+      });
+      document.getElementById('order-form').onsubmit = function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        fetch('http://localhost:3004/api/orders', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: [
+              {
+                productId: product._id,
+                productName: product.name,
+                unit: product.unit,
+                quantity: Number(formData.get('quantity')),
+                price: product.price
+              }
+            ],
+            customerName: formData.get('customerName'),
+            customerPhone: formData.get('phone'),
+            customerAddress: formData.get('address'),
+            deliveryDate: formData.get('deliveryDate'),
+            totalAmount: Number(formData.get('quantity')) * product.price
+          })
+        })
+        .then(res => res.json())
+        .then(data => {
+          const result = document.getElementById('order-result');
+          if (data.success) {
+            const deliveryDate = formData.get('deliveryDate');
+            result.innerHTML = `<div style='color:green;font-size:18px;margin-bottom:12px;'>Đặt hàng thành công!</div>
+              <div style='font-size:16px;margin-bottom:10px;'>Ngày giao hàng: <b>${deliveryDate ? (new Date(deliveryDate).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: '2-digit' })) : ''}</b></div>
+              <button onclick="window.location.href='index.html'" style="background:var(--main-green);color:#fff;padding:10px 24px;border:none;border-radius:4px;font-size:16px;margin-right:12px;cursor:pointer;"><i class='fa fa-home'></i> Về trang chủ</button>`;
+            this.reset();
+          } else {
+            result.innerHTML = '<span style="color:red;">Lỗi: ' + (data.errors ? data.errors.join(', ') : data.message) + '</span>';
+          }
+        })
+        .catch(() => {
+          document.getElementById('order-result').innerHTML = '<span style="color:red;">Lỗi kết nối server!</span>';
+        });
+      };
+    });
+  } else {
+    // Hiển thị danh sách đơn hàng
+    fetch('http://localhost:3004/api/orders')
+      .then(async res => {
+        const data = await res.json();
+        // Ẩn sidebar và set main-container thành block để bảng rộng
+        const sidebar = document.querySelector('.sidebar');
+        if (sidebar) sidebar.style.display = 'none';
+        const mainContainer = document.querySelector('.main-container');
+        if (mainContainer) mainContainer.style.display = 'block';
+        if (!data.success || !Array.isArray(data.data) || data.data.length === 0) {
+          main.innerHTML = `<div style='color:var(--main-green);font-size:22px;margin:48px auto;text-align:center;'>Vui lòng chọn sản phẩm để đặt hàng!</div>`;
+          main.innerHTML += "<div style='color:#888;font-size:18px;text-align:center;margin-top:24px;'>Chưa có đơn hàng nào!</div>";
+          return;
+        }
+        // Tạo map productId -> unit
+        const allProductIds = Array.from(new Set(data.data.flatMap(order => order.items.map(i => i.productId))));
+        const productUnitMap = {};
+        await Promise.all(allProductIds.map(async id => {
+          try {
+            const res = await fetch(`http://localhost:3001/api/products/${id}`);
+            const prod = await res.json();
+            if (prod && prod.data && prod.data.unit) productUnitMap[id] = prod.data.unit;
+          } catch {}
+        }));
+        let html = `
+          <section style="width:100%;max-width:1200px;margin:32px auto;background:#fff;padding:32px 28px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+            <h2 style="color:var(--main-green);font-size:2rem;text-align:center;margin-bottom:18px;">Đơn hàng của bạn</h2>
+            <div style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; background:#fff; border-radius:12px; box-shadow:0 1px 3px rgba(39,174,96,0.08);">
+                <thead style="background:var(--main-green); color:#fff;">
+                  <tr>
+                    <th style="padding:12px;">Mã đơn</th>
+                    <th style="padding:12px;">Ngày đặt</th>
+                    <th style="padding:12px;">Sản phẩm</th>
+                    <th style="padding:12px;">Số lượng</th>
+                    <th style="padding:12px;">Tổng tiền</th>
+                    <th style="padding:12px;">Trạng thái</th>
+                    <th style="padding:12px;">Ngày giao hàng</th>
+                    <th style="padding:12px;">Truy xuất</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${data.data.map(order => `
+                    <tr>
+                      <td style="padding:10px; text-align:center;">${order._id}</td>
+                      <td style="padding:10px; text-align:center;">${order.orderDate ? new Date(order.orderDate).toLocaleString() : ''}</td>
+                      <td style="padding:10px;">${order.items && order.items.length > 0 ? order.items.map(i => (i.productName ? i.productName : i.productId)).join(', ') : ''}</td>
+                      <td style="padding:10px; text-align:center;">${order.items && order.items.length > 0 ? order.items.map(i => (i.quantity !== undefined ? i.quantity : '') + ' ' + (i.unit || productUnitMap[i.productId] || '')).join(', ') : ''}</td>
+                      <td style="padding:10px; color:var(--main-green); font-weight:bold; text-align:right;">${order.totalAmount ? order.totalAmount + 'đ' : ''}</td>
+                      <td style="padding:10px; text-align:center;"><span style="background:var(--accent-green); color:#222; border-radius:6px; padding:4px 10px; font-size:13px;">${order.status || ''}</span></td>
+                      <td style="padding:10px; text-align:center;">${order.deliveryDate ? (new Date(order.deliveryDate).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: '2-digit' })) : ''}</td>
+                      <td style="padding:10px; text-align:center;">
+                        <button onclick="traceOrder('${order._id}')" style="background:#3498db;color:#fff;border:none;padding:6px 12px;border-radius:4px;cursor:pointer;font-size:12px;">
+                          <i class="fa fa-link"></i> Truy xuất
+                        </button>
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        `;
+        main.innerHTML = html;
+      });
+  }
+
+  function traceOrder(orderId) {
+    // Hiển thị loading
+    const modal = document.getElementById('trace-modal');
+    const modalContent = document.getElementById('trace-modal-content');
+    modalContent.innerHTML = '<div style="text-align:center;padding:20px;"><i class="fa fa-spinner fa-spin" style="font-size:24px;color:var(--main-green);"></i><p>Đang tải thông tin truy xuất nguồn gốc...</p></div>';
+    modal.style.display = 'flex';
+    // Gọi API truy xuất nguồn gốc
+    fetch(`http://localhost:3004/api/orders/${orderId}/trace`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.data) {
+          const trace = data.data.trace;
+          modalContent.innerHTML = `
+            <div class="trace-header">
+              <h3><i class="fa fa-link"></i> Truy xuất nguồn gốc đơn hàng</h3>
+              <button onclick="closeTraceModal()" class="close-btn">&times;</button>
+            </div>
+            <div class="trace-info">
+              <div class="trace-item">
+                <strong>Mã đơn hàng:</strong> ${data.data.orderId}
+              </div>
+              <div class="trace-item">
+                <strong>Khách hàng:</strong> ${trace.customerName}
+              </div>
+              <div class="trace-item">
+                <strong>Tổng tiền:</strong> ${trace.totalAmount.toLocaleString('vi-VN')} VNĐ
+              </div>
+              <div class="trace-item">
+                <strong>Blockchain Hash:</strong> <span style="font-family:monospace;font-size:12px;">${trace.blockchainHash}</span>
+              </div>
+              <div class="trace-item">
+                <strong>Thời gian tạo:</strong> ${new Date(trace.timestamp).toLocaleString('vi-VN')}
+              </div>
+            </div>
+            <div class="order-status">
+              <h4><i class="fa fa-route"></i> Trạng thái đơn hàng</h4>
+              ${trace.orderStatus.map((status, index) => `
+                <div class="supply-step">
+                  <div class="step-number">${index + 1}</div>
+                  <div class="step-info">
+                    <div class="step-title">${status.status}</div>
+                    <div class="step-description">${status.description}</div>
+                    <div class="step-time">${new Date(status.timestamp).toLocaleString('vi-VN')}</div>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+            <div class="payment-delivery">
+              <h4><i class="fa fa-credit-card"></i> Thông tin thanh toán & giao hàng</h4>
+              <div class="trace-item">
+                <strong>Phương thức thanh toán:</strong> ${trace.paymentInfo.method}
+              </div>
+              <div class="trace-item">
+                <strong>Trạng thái thanh toán:</strong> ${trace.paymentInfo.status}
+              </div>
+              <div class="trace-item">
+                <strong>Số tiền:</strong> ${trace.paymentInfo.amount.toLocaleString('vi-VN')} VNĐ
+              </div>
+              <div class="trace-item">
+                <strong>Địa chỉ giao hàng:</strong> ${trace.deliveryInfo.address}
+              </div>
+              <div class="trace-item">
+                <strong>Ngày giao dự kiến:</strong> ${new Date(trace.deliveryInfo.estimatedDelivery).toLocaleDateString('vi-VN')}
+              </div>
+              <div class="trace-item">
+                <strong>Mã vận đơn:</strong> ${trace.deliveryInfo.trackingId}
+              </div>
+            </div>
+          `;
+        } else {
+          modalContent.innerHTML = `
+            <div class="trace-header">
+              <h3><i class="fa fa-exclamation-triangle"></i> Lỗi truy xuất</h3>
+              <button onclick="closeTraceModal()" class="close-btn">&times;</button>
+            </div>
+            <div style="text-align:center;padding:20px;color:#e74c3c;">
+              <p>Không thể tải thông tin truy xuất nguồn gốc!</p>
+              <p>${data.message || 'Vui lòng thử lại sau.'}</p>
+            </div>
+          `;
+        }
+      })
+      .catch(error => {
+        modalContent.innerHTML = `
+          <div class="trace-header">
+            <h3><i class="fa fa-exclamation-triangle"></i> Lỗi kết nối</h3>
+            <button onclick="closeTraceModal()" class="close-btn">&times;</button>
+          </div>
+          <div style="text-align:center;padding:20px;color:#e74c3c;">
+            <p>Lỗi kết nối server!</p>
+            <p>Vui lòng kiểm tra kết nối và thử lại.</p>
+          </div>
+        `;
+      });
+  }
+  function closeTraceModal() {
+    document.getElementById('trace-modal').style.display = 'none';
+  }
+  </script>
+</body>
+</html>
