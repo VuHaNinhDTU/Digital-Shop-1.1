@@ -51,9 +51,41 @@ app.use((req, res, next) => {
 });
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/cho-nong-san-so', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/cho-nong-san-so');
+
+// Health check endpoint
+app.get('/health', async (req, res) => {
+  try {
+    // Kiểm tra kết nối database
+    const dbState = mongoose.connection.readyState;
+    const dbStatus = dbState === 1 ? 'connected' : dbState === 2 ? 'connecting' : 'disconnected';
+    
+    const healthStatus = {
+      status: dbState === 1 ? 'healthy' : 'unhealthy',
+      timestamp: new Date().toISOString(),
+      service: 'product-service',
+      version: '1.0.0',
+      uptime: process.uptime(),
+      database: {
+        status: dbStatus,
+        name: 'cho-nong-san-so'
+      },
+      memory: {
+        used: Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + ' MB',
+        total: Math.round(process.memoryUsage().heapTotal / 1024 / 1024) + ' MB'
+      }
+    };
+
+    const statusCode = healthStatus.status === 'healthy' ? 200 : 503;
+    res.status(statusCode).json(healthStatus);
+  } catch (error) {
+    res.status(503).json({
+      status: 'unhealthy',
+      timestamp: new Date().toISOString(),
+      service: 'product-service',
+      error: error.message
+    });
+  }
 });
 
 // Không cần định nghĩa lại Product model ở đây
@@ -72,14 +104,24 @@ app.post('/api/products', function(req, res, next) {
   });
 }, async (req, res) => {
   try {
-    const { name, price, category, description, unit } = req.body;
-    let imageUrls = [];
+    // Chuẩn bị data với imageUrls từ uploaded files
+    const productData = {
+      name: req.body.name,
+      price: parseFloat(req.body.price),
+      category: req.body.category,
+      description: req.body.description,
+      unit: req.body.unit
+    };
+    
+    // Thêm imageUrls nếu có files upload
     if (req.files && req.files.length > 0) {
-      imageUrls = req.files.map(f => '/uploads/' + f.filename);
+      productData.imageUrls = req.files.map(f => '/uploads/' + f.filename);
     }
-    const product = new Product({ name, price, category, description, unit, imageUrls });
-    await product.save();
-    res.json({ success: true, data: product });
+    
+    // Sử dụng controller để đảm bảo thống nhất với service layer
+    req.body = productData;
+    return controller.create(req, res);
+    
   } catch (err) {
     res.status(500).json({ success: false, message: 'Lỗi tạo sản phẩm', error: err.message });
   }
@@ -99,8 +141,7 @@ app.get('/api/images/:id', async (req, res) => {
   }
 });
 
-// ... các route sản phẩm cũ
-app.post('/api/products/old', (req, res) => controller.create(req, res));
+// API routes sử dụng controller để đảm bảo thống nhất
 app.get('/api/products', (req, res) => controller.getAll(req, res));
 app.get('/api/products/:id', (req, res) => controller.getById(req, res));
 app.put('/api/products/:id', (req, res) => controller.update(req, res));

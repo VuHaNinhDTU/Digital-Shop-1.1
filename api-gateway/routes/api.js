@@ -214,7 +214,7 @@ router.delete('/services/:serviceName', basicAuth, (req, res) => {
     });
     
   } catch (error) {
-    logger.error(`Failed to unregister service ${req.params.serviceName}:`, error);
+    logger.error('Failed to unregister service:', error);
     res.status(500).json({
       error: 'Failed to unregister service',
       message: error.message
@@ -223,289 +223,177 @@ router.delete('/services/:serviceName', basicAuth, (req, res) => {
 });
 
 // ========================================
-// ANALYTICS & METRICS
+// HEALTH CHECK ENDPOINTS
 // ========================================
 
-// Lấy dashboard analytics
-router.get('/analytics/dashboard', async (req, res) => {
+// Health check tổng hợp
+router.get('/health', async (req, res) => {
   try {
-    const timeRange = req.query.timeRange || '1h';
-    const dashboardStats = await analyticsService.getDashboardStats(timeRange);
+    const healthStatus = await healthChecker.getOverallHealth();
     
-    res.json({
+    const statusCode = healthStatus.status === 'healthy' ? 200 : 503;
+    res.status(statusCode).json(healthStatus);
+    
+  } catch (error) {
+    logger.error('Health check error:', error);
+    res.status(503).json({
+      status: 'unhealthy',
       timestamp: new Date().toISOString(),
-      ...dashboardStats
-    });
-    
-  } catch (error) {
-    logger.error('Failed to get dashboard analytics:', error);
-    res.status(500).json({
-      error: 'Failed to retrieve analytics',
-      message: error.message
+      error: error.message
     });
   }
 });
 
-// Lấy top endpoints
-router.get('/analytics/endpoints', async (req, res) => {
-  try {
-    const limit = parseInt(req.query.limit) || 10;
-    const timeRange = req.query.timeRange || '1h';
-    
-    const topEndpoints = await analyticsService.getTopEndpoints(limit, timeRange);
-    
-    res.json({
-      timestamp: new Date().toISOString(),
-      timeRange,
-      limit,
-      endpoints: topEndpoints
-    });
-    
-  } catch (error) {
-    logger.error('Failed to get top endpoints:', error);
-    res.status(500).json({
-      error: 'Failed to retrieve top endpoints',
-      message: error.message
-    });
-  }
-});
-
-// Lấy error analysis
-router.get('/analytics/errors', async (req, res) => {
-  try {
-    const timeRange = req.query.timeRange || '1h';
-    const errorAnalysis = await analyticsService.getErrorAnalysis(timeRange);
-    
-    res.json({
-      timestamp: new Date().toISOString(),
-      timeRange,
-      errors: errorAnalysis
-    });
-    
-  } catch (error) {
-    logger.error('Failed to get error analysis:', error);
-    res.status(500).json({
-      error: 'Failed to retrieve error analysis',
-      message: error.message
-    });
-  }
-});
-
-// ========================================
-// SYSTEM MONITORING
-// ========================================
-
-// Lấy system overview
-router.get('/system/overview', (req, res) => {
-  try {
-    const systemOverview = serviceRegistry.getSystemOverview();
-    const healthSummary = healthChecker.getHealthSummary();
-    const analyticsStatus = analyticsService.getStatus();
-    
-    res.json({
-      timestamp: new Date().toISOString(),
-      system: systemOverview,
-      health: healthSummary,
-      analytics: analyticsStatus,
-      gateway: {
-        uptime: process.uptime(),
-        memory: process.memoryUsage(),
-        cpu: process.cpuUsage()
-      }
-    });
-    
-  } catch (error) {
-    logger.error('Failed to get system overview:', error);
-    res.status(500).json({
-      error: 'Failed to retrieve system overview',
-      message: error.message
-    });
-  }
-});
-
-// Lấy system metrics
-router.get('/system/metrics', (req, res) => {
-  try {
-    const metrics = {
-      timestamp: new Date().toISOString(),
-      uptime: process.uptime(),
-      memory: process.memoryUsage(),
-      cpu: process.cpuUsage(),
-      loadAverage: process.loadavg && process.loadavg(),
-      platform: process.platform,
-      nodeVersion: process.version,
-      pid: process.pid,
-      ppid: process.ppid
-    };
-    
-    res.json(metrics);
-    
-  } catch (error) {
-    logger.error('Failed to get system metrics:', error);
-    res.status(500).json({
-      error: 'Failed to retrieve system metrics',
-      message: error.message
-    });
-  }
-});
-
-// ========================================
-// LOAD BALANCER MANAGEMENT
-// ========================================
-
-// Lấy load balancer stats
-router.get('/loadbalancer/stats', (req, res) => {
-  try {
-    const services = serviceRegistry.getAllServices();
-    const loadBalancerStats = {};
-    
-    for (const [serviceName, serviceInfo] of Object.entries(services)) {
-      if (serviceInfo.loadBalancer) {
-        loadBalancerStats[serviceName] = {
-          strategy: serviceInfo.loadBalancer.strategy,
-          healthyInstances: serviceInfo.loadBalancer.healthyInstances.length,
-          totalInstances: serviceInfo.instances.length,
-          metrics: serviceInfo.loadBalancer.metrics
-        };
-      }
-    }
-    
-    res.json({
-      timestamp: new Date().toISOString(),
-      loadBalancerStats
-    });
-    
-  } catch (error) {
-    logger.error('Failed to get load balancer stats:', error);
-    res.status(500).json({
-      error: 'Failed to retrieve load balancer stats',
-      message: error.message
-    });
-  }
-});
-
-// ========================================
-// HEALTH CHECK MANAGEMENT
-// ========================================
-
-// Trigger health check cho tất cả services
-router.post('/health/check-all', basicAuth, async (req, res) => {
-  try {
-    await healthChecker.performHealthChecks();
-    
-    res.json({
-      message: 'Health checks triggered for all services',
-      timestamp: new Date().toISOString()
-    });
-    
-  } catch (error) {
-    logger.error('Failed to trigger health checks:', error);
-    res.status(500).json({
-      error: 'Failed to trigger health checks',
-      message: error.message
-    });
-  }
-});
-
-// Trigger health check cho service cụ thể
-router.post('/health/check/:serviceName', basicAuth, async (req, res) => {
+// Health check cho service cụ thể
+router.get('/health/:serviceName', async (req, res) => {
   try {
     const { serviceName } = req.params;
-    const healthResult = await serviceRegistry.checkServiceHealth(serviceName);
+    const healthStatus = await healthChecker.checkServiceHealth(serviceName);
     
-    res.json({
-      serviceName,
-      result: healthResult,
-      timestamp: new Date().toISOString()
-    });
+    const statusCode = healthStatus.status === 'healthy' ? 200 : 503;
+    res.status(statusCode).json(healthStatus);
     
   } catch (error) {
-    logger.error(`Failed to check health for service ${req.params.serviceName}:`, error);
-    res.status(500).json({
-      error: 'Failed to check service health',
-      message: error.message
+    logger.error(`Health check error for ${req.params.serviceName}:`, error);
+    res.status(503).json({
+      status: 'unhealthy',
+      service: req.params.serviceName,
+      timestamp: new Date().toISOString(),
+      error: error.message
     });
   }
 });
 
 // ========================================
-// LOGS & DEBUGGING
+// ANALYTICS ENDPOINTS
 // ========================================
 
-// Lấy logs gần đây
-router.get('/logs', basicAuth, (req, res) => {
+// Lấy analytics tổng hợp
+router.get('/analytics', async (req, res) => {
   try {
-    const level = req.query.level || 'info';
-    const limit = parseInt(req.query.limit) || 100;
-    
-    // Đây là mock implementation
-    // Trong thực tế, bạn sẽ đọc từ log files hoặc log database
-    const logs = [
-      {
-        timestamp: new Date().toISOString(),
-        level: 'info',
-        message: 'API Gateway started successfully',
-        service: 'gateway'
-      }
-    ];
+    const analytics = await analyticsService.getAnalytics();
     
     res.json({
       timestamp: new Date().toISOString(),
-      level,
-      limit,
-      logs
+      analytics
     });
     
   } catch (error) {
-    logger.error('Failed to get logs:', error);
+    logger.error('Analytics error:', error);
     res.status(500).json({
-      error: 'Failed to retrieve logs',
+      error: 'Failed to get analytics',
       message: error.message
     });
   }
 });
 
-// ========================================
-// WEBSOCKET EVENTS
-// ========================================
-
-// Emit event to dashboard
-router.post('/events/emit', basicAuth, (req, res) => {
+// Lấy analytics cho service cụ thể
+router.get('/analytics/:serviceName', async (req, res) => {
   try {
-    const { event, data } = req.body;
+    const { serviceName } = req.params;
+    const analytics = await analyticsService.getServiceAnalytics(serviceName);
     
-    if (!event) {
-      return res.status(400).json({
-        error: 'Event name is required'
-      });
-    }
-    
-    const io = req.app.get('io');
-    if (io) {
-      io.emit(event, data);
-      
-      res.json({
-        message: 'Event emitted successfully',
-        event,
-        timestamp: new Date().toISOString()
-      });
-    } else {
-      res.status(500).json({
-        error: 'WebSocket not available'
-      });
-    }
+    res.json({
+      timestamp: new Date().toISOString(),
+      service: serviceName,
+      analytics
+    });
     
   } catch (error) {
-    logger.error('Failed to emit event:', error);
+    logger.error(`Analytics error for ${req.params.serviceName}:`, error);
     res.status(500).json({
-      error: 'Failed to emit event',
+      error: 'Failed to get service analytics',
       message: error.message
     });
   }
 });
 
 // ========================================
-// DATABASE OPTIMIZATION ENDPOINTS
+// PRODUCT SERVICE PROXY
+// ========================================
+
+// Proxy all product requests to product service
+router.all('/products*', async (req, res) => {
+  try {
+    const productService = serviceRegistry.getService('product-service');
+    
+    if (!productService || !productService.healthy) {
+      return res.status(503).json({
+        error: 'Product service unavailable',
+        message: 'Product service is currently down'
+      });
+    }
+    
+    // Get current user from JWT token
+    const token = req.headers.authorization?.replace('Bearer ', '');
+    let sellerId = null;
+    
+    if (token) {
+      try {
+        const jwtAuth = require('../middleware/jwtAuth');
+        const decoded = jwtAuth.verifyToken(token);
+        sellerId = decoded.id;
+      } catch (error) {
+        console.log('JWT verification failed:', error.message);
+      }
+    }
+    
+    // Forward request to product service
+    const targetUrl = `${productService.url}${req.path}`;
+    const requestOptions = {
+      method: req.method,
+      headers: {
+        ...req.headers,
+        host: new URL(productService.url).host
+      }
+    };
+    
+    // Handle different content types
+    if (req.method === 'POST' || req.method === 'PUT') {
+      if (req.headers['content-type']?.includes('multipart/form-data')) {
+        // For file uploads, pipe the request directly
+        const http = require('http');
+        const url = require('url');
+        const targetUrlObj = url.parse(targetUrl);
+        
+        const proxyReq = http.request({
+          hostname: targetUrlObj.hostname,
+          port: targetUrlObj.port,
+          path: targetUrlObj.path,
+          method: req.method,
+          headers: req.headers
+        }, (proxyRes) => {
+          res.writeHead(proxyRes.statusCode, proxyRes.headers);
+          proxyRes.pipe(res);
+        });
+        
+        req.pipe(proxyReq);
+        return;
+      } else {
+        // For JSON data, add sellerId if available
+        if (sellerId && req.body) {
+          req.body.sellerId = sellerId;
+        }
+        requestOptions.body = JSON.stringify(req.body);
+      }
+    }
+    
+    const response = await fetch(targetUrl, requestOptions);
+    const data = await response.json();
+    
+    res.status(response.status).json(data);
+    
+  } catch (error) {
+    logger.error('Product service proxy error:', error);
+    res.status(500).json({
+      error: 'Product service error',
+      message: error.message
+    });
+  }
+});
+
+// ========================================
+// DATABASE OPTIMIZATION
 // ========================================
 
 // Database Optimization Endpoint

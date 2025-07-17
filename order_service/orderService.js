@@ -16,11 +16,14 @@ class OrderService {
     return errors;
   }
   async createOrder(data) {
+    console.log('📝 Creating order with data:', data);
     const errors = this.validateOrderData(data);
     if (errors.length) return { errors };
     
     // Tạo đơn hàng trong DB
+    console.log('💾 Saving order to database...');
     const order = await repo.create(data);
+    console.log('✅ Order saved to database:', order._id);
     
     // Ghi nhận truy xuất đơn hàng lên blockchain
     try {
@@ -44,10 +47,16 @@ class OrderService {
     return repo.findAll();
   }
   async updateOrder(id, data) {
-    return repo.update(id, data);
+    console.log(`📝 Updating order ${id} with data:`, data);
+    const result = await repo.update(id, data);
+    console.log('✅ Order updated:', result?._id);
+    return result;
   }
   async deleteOrder(id) {
-    return repo.delete(id);
+    console.log(`🗑️ Deleting order ${id}`);
+    const result = await repo.delete(id);
+    console.log('✅ Order deleted:', result?._id);
+    return result;
   }
   async getOrderTrace(orderId) {
     try {

@@ -1,0 +1,934 @@
+{
+  error: ReferenceError: verifyToken is not defined
+      at Object.<anonymous> (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\index.js:227:63)
+      at Module._compile (node:internal/modules/cjs/loader:1562:14)
+      at Object..js (node:internal/modules/cjs/loader:1699:10)
+      at Module.load (node:internal/modules/cjs/loader:1313:32)
+      at Function._load (node:internal/modules/cjs/loader:1123:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+      at node:internal/main/run_main_module:36:49,
+  level: 'error',
+  message: 'uncaughtException: verifyToken is not defined\n' +
+    'ReferenceError: verifyToken is not defined\n' +
+    '    at Object.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:227:63)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1562:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1699:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1313:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1123:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  stack: 'ReferenceError: verifyToken is not defined\n' +
+    '    at Object.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:227:63)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1562:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1699:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1313:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1123:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  exception: true,
+  date: 'Wed Jul 16 2025 15:39:22 GMT+0700 (Indochina Time)',
+  process: {
+    pid: 18328,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway',
+    execPath: 'E:\\Coding Resource\\Node.js\\node.exe',
+    version: 'v22.13.0',
+    argv: [
+      'E:\\Coding Resource\\Node.js\\node.exe',
+      'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js'
+    ],
+    memoryUsage: {
+      rss: 124383232,
+      heapTotal: 85626880,
+      heapUsed: 48247472,
+      external: 39896616,
+      arrayBuffers: 36557268
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 77020.734 },
+  trace: [
+    {
+      column: 63,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js',
+      function: null,
+      line: 227,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1562,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1699,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1313,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1123,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 322,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 217,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/modules/run_main',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 170,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 49,
+      file: 'node:internal/main/run_main_module',
+      function: null,
+      line: 36,
+      method: null,
+      native: false
+    }
+  ],
+  timestamp: '2025-07-16 15:39:22'
+}
+{
+  error: ReferenceError: verifyToken is not defined
+      at Object.<anonymous> (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\index.js:227:63)
+      at Module._compile (node:internal/modules/cjs/loader:1562:14)
+      at Object..js (node:internal/modules/cjs/loader:1699:10)
+      at Module.load (node:internal/modules/cjs/loader:1313:32)
+      at Function._load (node:internal/modules/cjs/loader:1123:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+      at node:internal/main/run_main_module:36:49,
+  level: 'error',
+  message: 'uncaughtException: verifyToken is not defined\n' +
+    'ReferenceError: verifyToken is not defined\n' +
+    '    at Object.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:227:63)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1562:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1699:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1313:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1123:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  stack: 'ReferenceError: verifyToken is not defined\n' +
+    '    at Object.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:227:63)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1562:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1699:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1313:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1123:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  exception: true,
+  date: 'Wed Jul 16 2025 16:11:02 GMT+0700 (Indochina Time)',
+  process: {
+    pid: 22632,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway',
+    execPath: 'E:\\Coding Resource\\Node.js\\node.exe',
+    version: 'v22.13.0',
+    argv: [
+      'E:\\Coding Resource\\Node.js\\node.exe',
+      'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js'
+    ],
+    memoryUsage: {
+      rss: 127520768,
+      heapTotal: 86413312,
+      heapUsed: 44501872,
+      external: 40322608,
+      arrayBuffers: 36557268
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 78920.671 },
+  trace: [
+    {
+      column: 63,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js',
+      function: null,
+      line: 227,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1562,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1699,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1313,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1123,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 322,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 217,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/modules/run_main',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 170,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 49,
+      file: 'node:internal/main/run_main_module',
+      function: null,
+      line: 36,
+      method: null,
+      native: false
+    }
+  ],
+  timestamp: '2025-07-16 16:11:02'
+}
+{
+  error: ReferenceError: verifyToken is not defined
+      at Object.<anonymous> (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\index.js:227:63)
+      at Module._compile (node:internal/modules/cjs/loader:1562:14)
+      at Object..js (node:internal/modules/cjs/loader:1699:10)
+      at Module.load (node:internal/modules/cjs/loader:1313:32)
+      at Function._load (node:internal/modules/cjs/loader:1123:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+      at node:internal/main/run_main_module:36:49,
+  level: 'error',
+  message: 'uncaughtException: verifyToken is not defined\n' +
+    'ReferenceError: verifyToken is not defined\n' +
+    '    at Object.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:227:63)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1562:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1699:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1313:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1123:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  stack: 'ReferenceError: verifyToken is not defined\n' +
+    '    at Object.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:227:63)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1562:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1699:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1313:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1123:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  exception: true,
+  date: 'Wed Jul 16 2025 16:12:24 GMT+0700 (Indochina Time)',
+  process: {
+    pid: 10080,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway',
+    execPath: 'E:\\Coding Resource\\Node.js\\node.exe',
+    version: 'v22.13.0',
+    argv: [
+      'E:\\Coding Resource\\Node.js\\node.exe',
+      'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js'
+    ],
+    memoryUsage: {
+      rss: 128061440,
+      heapTotal: 86151168,
+      heapUsed: 44369720,
+      external: 40322608,
+      arrayBuffers: 36557268
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 79003.234 },
+  trace: [
+    {
+      column: 63,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js',
+      function: null,
+      line: 227,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1562,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1699,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1313,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1123,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 322,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 217,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/modules/run_main',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 170,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 49,
+      file: 'node:internal/main/run_main_module',
+      function: null,
+      line: 36,
+      method: null,
+      native: false
+    }
+  ],
+  timestamp: '2025-07-16 16:12:24'
+}
+{
+  error: ReferenceError: verifyToken is not defined
+      at Object.<anonymous> (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\index.js:227:63)
+      at Module._compile (node:internal/modules/cjs/loader:1562:14)
+      at Object..js (node:internal/modules/cjs/loader:1699:10)
+      at Module.load (node:internal/modules/cjs/loader:1313:32)
+      at Function._load (node:internal/modules/cjs/loader:1123:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+      at node:internal/main/run_main_module:36:49,
+  level: 'error',
+  message: 'uncaughtException: verifyToken is not defined\n' +
+    'ReferenceError: verifyToken is not defined\n' +
+    '    at Object.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:227:63)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1562:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1699:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1313:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1123:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  stack: 'ReferenceError: verifyToken is not defined\n' +
+    '    at Object.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:227:63)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1562:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1699:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1313:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1123:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  exception: true,
+  date: 'Wed Jul 16 2025 16:13:49 GMT+0700 (Indochina Time)',
+  process: {
+    pid: 18680,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway',
+    execPath: 'E:\\Coding Resource\\Node.js\\node.exe',
+    version: 'v22.13.0',
+    argv: [
+      'E:\\Coding Resource\\Node.js\\node.exe',
+      'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js'
+    ],
+    memoryUsage: {
+      rss: 128352256,
+      heapTotal: 86937600,
+      heapUsed: 44109832,
+      external: 40322608,
+      arrayBuffers: 36557268
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 79088.046 },
+  trace: [
+    {
+      column: 63,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js',
+      function: null,
+      line: 227,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1562,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1699,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1313,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1123,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 322,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 217,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/modules/run_main',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 170,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 49,
+      file: 'node:internal/main/run_main_module',
+      function: null,
+      line: 36,
+      method: null,
+      native: false
+    }
+  ],
+  timestamp: '2025-07-16 16:13:49'
+}
+{
+  error: ReferenceError: verifyToken is not defined
+      at Object.<anonymous> (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\index.js:227:63)
+      at Module._compile (node:internal/modules/cjs/loader:1562:14)
+      at Object..js (node:internal/modules/cjs/loader:1699:10)
+      at Module.load (node:internal/modules/cjs/loader:1313:32)
+      at Function._load (node:internal/modules/cjs/loader:1123:12)
+      at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+      at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)
+      at node:internal/main/run_main_module:36:49,
+  level: 'error',
+  message: 'uncaughtException: verifyToken is not defined\n' +
+    'ReferenceError: verifyToken is not defined\n' +
+    '    at Object.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:227:63)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1562:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1699:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1313:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1123:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  stack: 'ReferenceError: verifyToken is not defined\n' +
+    '    at Object.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:227:63)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1562:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1699:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1313:32)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1123:12)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)\n' +
+    '    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)\n' +
+    '    at node:internal/main/run_main_module:36:49',
+  exception: true,
+  date: 'Wed Jul 16 2025 16:14:48 GMT+0700 (Indochina Time)',
+  process: {
+    pid: 4148,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway',
+    execPath: 'E:\\Coding Resource\\Node.js\\node.exe',
+    version: 'v22.13.0',
+    argv: [
+      'E:\\Coding Resource\\Node.js\\node.exe',
+      'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js'
+    ],
+    memoryUsage: {
+      rss: 127832064,
+      heapTotal: 86151168,
+      heapUsed: 44358320,
+      external: 40322608,
+      arrayBuffers: 36557268
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 79146.625 },
+  trace: [
+    {
+      column: 63,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js',
+      function: null,
+      line: 227,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1562,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1699,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1313,
+      method: 'load',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1123,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 322,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 217,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/modules/run_main',
+      function: 'Function.executeUserEntryPoint [as runMain]',
+      line: 170,
+      method: 'executeUserEntryPoint [as runMain]',
+      native: false
+    },
+    {
+      column: 49,
+      file: 'node:internal/main/run_main_module',
+      function: null,
+      line: 36,
+      method: null,
+      native: false
+    }
+  ],
+  timestamp: '2025-07-16 16:14:48'
+}
+{
+  error: Error: listen EADDRINUSE: address already in use :::3000
+      at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+      at listenInCluster (node:net:1994:12)
+      at Server.listen (node:net:2099:7)
+      at startServer (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\index.js:492:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+    code: 'EADDRINUSE',
+    errno: -4091,
+    syscall: 'listen',
+    address: '::',
+    port: 3000
+  },
+  level: 'error',
+  message: 'uncaughtException: listen EADDRINUSE: address already in use :::3000\n' +
+    'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n' +
+    '    at listenInCluster (node:net:1994:12)\n' +
+    '    at Server.listen (node:net:2099:7)\n' +
+    '    at startServer (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:492:12)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)',
+  stack: 'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n' +
+    '    at listenInCluster (node:net:1994:12)\n' +
+    '    at Server.listen (node:net:2099:7)\n' +
+    '    at startServer (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:492:12)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)',
+  exception: true,
+  date: 'Wed Jul 16 2025 20:45:36 GMT+0700 (Indochina Time)',
+  process: {
+    pid: 9736,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway',
+    execPath: 'E:\\Coding Resource\\Node.js\\node.exe',
+    version: 'v22.13.0',
+    argv: [
+      'E:\\Coding Resource\\Node.js\\node.exe',
+      'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js'
+    ],
+    memoryUsage: {
+      rss: 135008256,
+      heapTotal: 88510464,
+      heapUsed: 49009784,
+      external: 40059229,
+      arrayBuffers: 36569678
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 95394.843 },
+  trace: [
+    {
+      column: 16,
+      file: 'node:net',
+      function: 'Server.setupListenHandle [as _listen2]',
+      line: 1937,
+      method: 'setupListenHandle [as _listen2]',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:net',
+      function: 'listenInCluster',
+      line: 1994,
+      method: null,
+      native: false
+    },
+    {
+      column: 7,
+      file: 'node:net',
+      function: 'Server.listen',
+      line: 2099,
+      method: 'listen',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js',
+      function: 'startServer',
+      line: 492,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 105,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-07-16 20:45:36'
+}
+{
+  error: Error: listen EADDRINUSE: address already in use :::3000
+      at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+      at listenInCluster (node:net:1994:12)
+      at Server.listen (node:net:2099:7)
+      at startServer (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\index.js:492:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+    code: 'EADDRINUSE',
+    errno: -4091,
+    syscall: 'listen',
+    address: '::',
+    port: 3000
+  },
+  level: 'error',
+  message: 'uncaughtException: listen EADDRINUSE: address already in use :::3000\n' +
+    'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n' +
+    '    at listenInCluster (node:net:1994:12)\n' +
+    '    at Server.listen (node:net:2099:7)\n' +
+    '    at startServer (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:492:12)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)',
+  stack: 'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n' +
+    '    at listenInCluster (node:net:1994:12)\n' +
+    '    at Server.listen (node:net:2099:7)\n' +
+    '    at startServer (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:492:12)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)',
+  exception: true,
+  date: 'Wed Jul 16 2025 21:34:12 GMT+0700 (Indochina Time)',
+  process: {
+    pid: 16872,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway',
+    execPath: 'E:\\Coding Resource\\Node.js\\node.exe',
+    version: 'v22.13.0',
+    argv: [
+      'E:\\Coding Resource\\Node.js\\node.exe',
+      'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js'
+    ],
+    memoryUsage: {
+      rss: 135229440,
+      heapTotal: 87986176,
+      heapUsed: 49084264,
+      external: 40059229,
+      arrayBuffers: 36569678
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 98310.828 },
+  trace: [
+    {
+      column: 16,
+      file: 'node:net',
+      function: 'Server.setupListenHandle [as _listen2]',
+      line: 1937,
+      method: 'setupListenHandle [as _listen2]',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:net',
+      function: 'listenInCluster',
+      line: 1994,
+      method: null,
+      native: false
+    },
+    {
+      column: 7,
+      file: 'node:net',
+      function: 'Server.listen',
+      line: 2099,
+      method: 'listen',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js',
+      function: 'startServer',
+      line: 492,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 105,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-07-16 21:34:12'
+}
+{
+  error: Error: listen EADDRINUSE: address already in use :::3000
+      at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+      at listenInCluster (node:net:1994:12)
+      at Server.listen (node:net:2099:7)
+      at startServer (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\index.js:500:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+    code: 'EADDRINUSE',
+    errno: -4091,
+    syscall: 'listen',
+    address: '::',
+    port: 3000
+  },
+  level: 'error',
+  message: 'uncaughtException: listen EADDRINUSE: address already in use :::3000\n' +
+    'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n' +
+    '    at listenInCluster (node:net:1994:12)\n' +
+    '    at Server.listen (node:net:2099:7)\n' +
+    '    at startServer (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:500:12)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)',
+  stack: 'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n' +
+    '    at listenInCluster (node:net:1994:12)\n' +
+    '    at Server.listen (node:net:2099:7)\n' +
+    '    at startServer (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:500:12)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)',
+  exception: true,
+  date: 'Wed Jul 16 2025 21:49:04 GMT+0700 (Indochina Time)',
+  process: {
+    pid: 21848,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway',
+    execPath: 'E:\\Coding Resource\\Node.js\\node.exe',
+    version: 'v22.13.0',
+    argv: [
+      'E:\\Coding Resource\\Node.js\\node.exe',
+      'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js'
+    ],
+    memoryUsage: {
+      rss: 136183808,
+      heapTotal: 88510464,
+      heapUsed: 49042256,
+      external: 40059229,
+      arrayBuffers: 36569678
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 99203.015 },
+  trace: [
+    {
+      column: 16,
+      file: 'node:net',
+      function: 'Server.setupListenHandle [as _listen2]',
+      line: 1937,
+      method: 'setupListenHandle [as _listen2]',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:net',
+      function: 'listenInCluster',
+      line: 1994,
+      method: null,
+      native: false
+    },
+    {
+      column: 7,
+      file: 'node:net',
+      function: 'Server.listen',
+      line: 2099,
+      method: 'listen',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js',
+      function: 'startServer',
+      line: 500,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 105,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-07-16 21:49:04'
+}

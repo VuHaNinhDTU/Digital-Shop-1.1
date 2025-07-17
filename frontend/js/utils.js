@@ -343,6 +343,13 @@ function ensureCartLinksWork() {
   const cartIcons = document.querySelectorAll('.fa-shopping-cart');
   cartIcons.forEach(icon => {
     const parentLink = icon.closest('a');
+    
+    // Skip if we're on seller dashboard or if parent link has data-section attribute
+    if (window.location.pathname.includes('seller-dashboard.html') || 
+        (parentLink && parentLink.hasAttribute('data-section'))) {
+      return; // Skip this icon, don't override its behavior
+    }
+    
     if (parentLink && (!parentLink.href || parentLink.href.includes('#'))) {
       parentLink.href = '/cart.html';
       parentLink.addEventListener('click', function(e) {

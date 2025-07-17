@@ -139,25 +139,55 @@ class RealDatabase {
       const sampleUsers = [
         {
           _id: 'user_admin_1',
-          username: 'admin',
+          username: 'demo_admin',
           email: 'admin@cho-nong-san-so.com',
+          password: 'admin123',
           role: 'admin',
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString()
         },
         {
-          _id: 'user_farmer_1',
-          username: 'farmer_001',
-          email: 'farmer001@example.com',
-          role: 'farmer',
+          _id: 'user_seller_1',
+          username: 'demo_seller',
+          email: 'seller@example.com',
+          password: 'seller123',
+          role: 'seller',
+          sellerProfile: {
+            businessName: 'Nông Trại Xanh',
+            businessType: 'Nông trại hữu cơ',
+            businessAddress: '123 Đường Nông Nghiệp, Phường 1, Quận 12, TP.HCM',
+            businessPhone: '0901234567',
+            businessEmail: 'nongtrai@example.com',
+            verification: 'verified',
+            commissionRate: 10,
+            bankInfo: {
+              bankName: 'Vietcombank',
+              accountNumber: '0123456789',
+              accountHolder: 'Nông Trại Xanh'
+            },
+            ratings: {
+              average: 4.8,
+              total: 15
+            }
+          },
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        },
+        {
+          _id: 'user_logistics_1',
+          username: 'demo_logistics',
+          email: 'logistics@example.com',
+          password: 'logistics123',
+          role: 'logistics',
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString()
         },
         {
           _id: 'user_customer_1',
-          username: 'customer_001',
-          email: 'customer001@example.com',
-          role: 'customer',
+          username: 'demo_user',
+          email: 'user@example.com',
+          password: 'user123',
+          role: 'user',
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString()
         }

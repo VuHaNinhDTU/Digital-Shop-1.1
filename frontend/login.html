@@ -144,6 +144,7 @@
     .role-user { background: #28a745; }
     .role-admin { background: #dc3545; }
     .role-logistics { background: #007bff; }
+    .role-seller { background: #fd7e14; }
 
     .form-group {
       margin-bottom: 20px;
@@ -337,6 +338,19 @@
           </div>
           <i class="fas fa-arrow-right"></i>
         </div>
+
+        <div class="demo-btn" onclick="fillDemoAccount('seller')">
+          <div class="role-info">
+            <div class="role-icon role-seller">
+              <i class="fas fa-store"></i>
+            </div>
+            <div>
+              <strong>Người bán</strong><br>
+              <small>demo_seller / seller123</small>
+            </div>
+          </div>
+          <i class="fas fa-arrow-right"></i>
+        </div>
       </div>
     </div>
 
@@ -349,7 +363,7 @@
 
       <div class="form-group">
         <label for="password">Mật khẩu</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" required autocomplete="current-password">
         <i class="fas fa-lock input-icon"></i>
       </div>
 
@@ -372,7 +386,8 @@
     const demoAccounts = {
       user: { username: 'demo_user', password: 'user123', role: 'user' },
       admin: { username: 'demo_admin', password: 'admin123', role: 'admin' },
-      logistics: { username: 'demo_logistics', password: 'logistics123', role: 'logistics' }
+      logistics: { username: 'demo_logistics', password: 'logistics123', role: 'logistics' },
+      seller: { username: 'demo_seller', password: 'seller123', role: 'seller' }
     };
 
     function fillDemoAccount(role) {
@@ -466,6 +481,9 @@
                 break;
               case 'logistics':
                 window.location.replace('logistics-panel.html');
+                break;
+              case 'seller':
+                window.location.replace('seller-dashboard.html');
                 break;
               case 'user':
               default:

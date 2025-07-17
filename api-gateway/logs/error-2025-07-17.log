@@ -1,0 +1,182 @@
+{
+  level: 'error',
+  message: 'Health check failed for product-service: Service product-service returned unhealthy status',
+  stack: 'Error: Service product-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 0)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)',
+  timestamp: '2025-07-17 00:04:28'
+}
+{
+  level: 'error',
+  message: 'Health check failed for order-service: Service order-service returned unhealthy status',
+  stack: 'Error: Service order-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 1)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)',
+  timestamp: '2025-07-17 00:04:28'
+}
+{
+  level: 'error',
+  message: 'Health check failed for user-service: Service user-service returned unhealthy status',
+  stack: 'Error: Service user-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 2)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)',
+  timestamp: '2025-07-17 00:04:28'
+}
+{
+  level: 'error',
+  message: 'Health check failed for product-service: Service product-service returned unhealthy status',
+  stack: 'Error: Service product-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 0)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)\n' +
+    '    at async cronJob.cron.schedule.scheduled [as _execution] (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:29:7)',
+  timestamp: '2025-07-17 00:04:32'
+}
+{
+  level: 'error',
+  message: 'Health check failed for order-service: Service order-service returned unhealthy status',
+  stack: 'Error: Service order-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 1)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)\n' +
+    '    at async cronJob.cron.schedule.scheduled [as _execution] (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:29:7)',
+  timestamp: '2025-07-17 00:04:32'
+}
+{
+  level: 'error',
+  message: 'Health check failed for user-service: Service user-service returned unhealthy status',
+  stack: 'Error: Service user-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 2)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)\n' +
+    '    at async cronJob.cron.schedule.scheduled [as _execution] (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:29:7)',
+  timestamp: '2025-07-17 00:04:32'
+}
+{
+  level: 'error',
+  message: 'Health check failed for product-service: Service product-service returned unhealthy status',
+  stack: 'Error: Service product-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 0)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)\n' +
+    '    at async cronJob.cron.schedule.scheduled [as _execution] (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:29:7)',
+  timestamp: '2025-07-17 00:05:02'
+}
+{
+  level: 'error',
+  message: 'Health check failed for order-service: Service order-service returned unhealthy status',
+  stack: 'Error: Service order-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 1)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)\n' +
+    '    at async cronJob.cron.schedule.scheduled [as _execution] (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:29:7)',
+  timestamp: '2025-07-17 00:05:02'
+}
+{
+  level: 'error',
+  message: 'Health check failed for user-service: Service user-service returned unhealthy status',
+  stack: 'Error: Service user-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 2)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)\n' +
+    '    at async cronJob.cron.schedule.scheduled [as _execution] (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:29:7)',
+  timestamp: '2025-07-17 00:05:02'
+}
+{
+  level: 'error',
+  message: 'Health check failed for product-service: Service product-service returned unhealthy status',
+  stack: 'Error: Service product-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 0)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)\n' +
+    '    at async cronJob.cron.schedule.scheduled [as _execution] (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:29:7)',
+  timestamp: '2025-07-17 00:05:32'
+}
+{
+  level: 'error',
+  message: 'Health check failed for order-service: Service order-service returned unhealthy status',
+  stack: 'Error: Service order-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 1)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)\n' +
+    '    at async cronJob.cron.schedule.scheduled [as _execution] (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:29:7)',
+  timestamp: '2025-07-17 00:05:32'
+}
+{
+  level: 'error',
+  message: 'Health check failed for user-service: Service user-service returned unhealthy status',
+  stack: 'Error: Service user-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 2)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)\n' +
+    '    at async cronJob.cron.schedule.scheduled [as _execution] (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:29:7)',
+  timestamp: '2025-07-17 00:05:32'
+}
+{
+  level: 'error',
+  message: 'Health check failed for product-service: Service product-service returned unhealthy status',
+  stack: 'Error: Service product-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 0)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)\n' +
+    '    at async cronJob.cron.schedule.scheduled [as _execution] (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:29:7)',
+  timestamp: '2025-07-17 00:06:02'
+}
+{
+  level: 'error',
+  message: 'Health check failed for order-service: Service order-service returned unhealthy status',
+  stack: 'Error: Service order-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 1)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)\n' +
+    '    at async cronJob.cron.schedule.scheduled [as _execution] (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:29:7)',
+  timestamp: '2025-07-17 00:06:02'
+}
+{
+  level: 'error',
+  message: 'Health check failed for user-service: Service user-service returned unhealthy status',
+  stack: 'Error: Service user-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 2)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)\n' +
+    '    at async cronJob.cron.schedule.scheduled [as _execution] (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:29:7)',
+  timestamp: '2025-07-17 00:06:02'
+}
+{
+  level: 'error',
+  message: 'Health check failed for order-service: Service order-service returned unhealthy status',
+  stack: 'Error: Service order-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 1)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)',
+  timestamp: '2025-07-17 00:12:57'
+}
+{
+  level: 'error',
+  message: 'Health check failed for user-service: Service user-service returned unhealthy status',
+  stack: 'Error: Service user-service returned unhealthy status\n' +
+    '    at HealthChecker.checkServiceWithRetry (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:110:21)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n' +
+    '    at async Promise.allSettled (index 2)\n' +
+    '    at async HealthChecker.performHealthChecks (C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\services\\healthChecker.js:68:23)',
+  timestamp: '2025-07-17 00:12:57'
+}

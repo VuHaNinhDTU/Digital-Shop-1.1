@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard - Chợ Nông Sản Số</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+        }
+
+        .seller-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: 3px 0 15px rgba(0,0,0,0.1);
+        }
+
+        .seller-profile {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+        }
+
+        .seller-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 36px;
+        }
+
+        .seller-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .seller-status {
+            font-size: 12px;
+            opacity: 0.8;
+            background: rgba(76, 175, 80, 0.3);
+            padding: 4px 12px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            margin-bottom: 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: rgba(255,255,255,0.1);
+            transform: translateX(5px);
+        }
+
+        .nav-link i {
+            width: 20px;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 30px;
+            background: #f5f7fa;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #667eea;
+            color: #667eea;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Dashboard Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .stat-icon.revenue { background: linear-gradient(135deg, #4CAF50, #45a049); }
+        .stat-icon.orders { background: linear-gradient(135deg, #2196F3, #1976D2); }
+        .stat-icon.products { background: linear-gradient(135deg, #FF9800, #F57C00); }
+        .stat-icon.customers { background: linear-gradient(135deg, #9C27B0, #7B1FA2); }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .stat-change {
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .stat-change.positive {
+            color: #4CAF50;
+        }
+
+        .stat-change.negative {
+            color: #f44336;
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+
+        /* Table Styles */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .data-table th {
+            background: #f7fafc;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-pending { background: #fff3cd; color: #856404; }
+        .status-confirmed { background: #cce5ff; color: #004085; }
+        .status-preparing { background: #e1ecf4; color: #0c5460; }
+        .status-shipped { background: #d1ecf1; color: #0c5460; }
+        .status-delivered { background: #d4edda; color: #155724; }
+        .status-cancelled { background: #f8d7da; color: #721c24; }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* Charts */
+        .chart-container {
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                overflow: hidden;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+
+        /* Action Buttons */
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-right: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn.edit {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .action-btn.delete {
+            background: #ffebee;
+            color: #d32f2f;
+        }
+
+        .action-btn.view {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .quick-action-card {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quick-action-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .quick-action-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .notification-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .notification-bell {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #667eea;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #f44336;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="seller-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="seller-profile">
+                <div class="seller-avatar">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div class="seller-name">Nông Trại Xanh</div>
+                <div class="seller-status">
+                    <i class="fas fa-check-circle"></i> Đã xác minh
+                </div>
+            </div>
+
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-section="dashboard">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Tổng quan</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="orders">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Quản lý đơn hàng</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="products">
+                        <i class="fas fa-box"></i>
+                        <span>Quản lý sản phẩm</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="inventory">
+                        <i class="fas fa-warehouse"></i>
+                        <span>Quản lý kho</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="revenue">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Doanh thu</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="customers">
+                        <i class="fas fa-users"></i>
+                        <span>Khách hàng</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="analytics">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Phân tích</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Cài đặt</span>
+                    </a>
+                </li>
+                <li class="nav-item" style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
+                    <a href="home.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Về trang chủ</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Đăng xuất</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <h1 class="page-title" id="pageTitle">Tổng quan</h1>
+                <div class="header-actions">
+                    <div class="notification-dropdown">
+                        <button class="notification-bell">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                    </div>
+                    <a href="#" class="btn btn-outline" data-section="products">
+                        <i class="fas fa-plus"></i>
+                        Thêm sản phẩm
+                    </a>
+                    <a href="#" class="btn btn-primary" onclick="exportData()">
+                        <i class="fas fa-download"></i>
+                        Xuất báo cáo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dashboard Overview -->
+            <div id="dashboard" class="content-section active">
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon revenue">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="totalRevenue">2,450,000₫</div>
+                        <div class="stat-label">Doanh thu tháng này</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +12.5% so với tháng trước
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon orders">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="totalOrders">156</div>
+                        <div class="stat-label">Đơn hàng tháng này</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +8.3% so với tháng trước
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon products">
+                                <i class="fas fa-box"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="totalProducts">24</div>
+                        <div class="stat-label">Sản phẩm đang bán</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +2 sản phẩm mới
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon customers">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="stat-value" id="totalCustomers">89</div>
+                        <div class="stat-label">Khách hàng</div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> +15 khách hàng mới
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <div class="quick-action-card" onclick="showSection('products')">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-plus-circle"></i>
+                        </div>
+                        <h4>Thêm sản phẩm</h4>
+                        <p>Đăng bán sản phẩm mới</p>
+                    </div>
+                    <div class="quick-action-card" onclick="showSection('orders')">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h4>Xử lý đơn hàng</h4>
+                        <p>3 đơn hàng chờ xác nhận</p>
+                    </div>
+                    <div class="quick-action-card" onclick="showSection('inventory')">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h4>Kiểm tra kho</h4>
+                        <p>5 sản phẩm sắp hết hàng</p>
+                    </div>
+                    <div class="quick-action-card" onclick="showSection('revenue')">
+                        <div class="quick-action-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Xem báo cáo</h4>
+                        <p>Phân tích doanh thu</p>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="section-card">
+                    <h3 class="section-title">Đơn hàng gần đây</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn</th>
+                                <th>Khách hàng</th>
+                                <th>Sản phẩm</th>
+                                <th>Tổng tiền</th>
+                                <th>Trạng thái</th>
+                                <th>Ngày đặt</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentOrdersTable">
+                            <tr>
+                                <td>#ORD001</td>
+                                <td>Nguyễn Văn An</td>
+                                <td>Cà chua hữu cơ (2kg)</td>
+                                <td>50,000₫</td>
+                                <td><span class="status-badge status-pending">Chờ xác nhận</span></td>
+                                <td>17/01/2025</td>
+                                <td>
+                                    <button class="action-btn edit" onclick="confirmOrder('ORD001')">Xác nhận</button>
+                                    <button class="action-btn view" onclick="viewOrder('ORD001')">Xem</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#ORD002</td>
+                                <td>Trần Thị Bình</td>
+                                <td>Xoài cát Hoà Lộc (1kg)</td>
+                                <td>45,000₫</td>
+                                <td><span class="status-badge status-confirmed">Đã xác nhận</span></td>
+                                <td>17/01/2025</td>
+                                <td>
+                                    <button class="action-btn edit" onclick="prepareOrder('ORD002')">Chuẩn bị</button>
+                                    <button class="action-btn view" onclick="viewOrder('ORD002')">Xem</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Orders Management -->
+            <div id="orders" class="content-section">
+                <div class="section-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3 class="section-title">Quản lý đơn hàng</h3>
+                        <div>
+                            <select class="form-select" style="width: auto; display: inline-block; margin-right: 10px;" onchange="filterOrders(this.value)">
+                                <option value="all">Tất cả trạng thái</option>
+                                <option value="pending">Chờ xác nhận</option>
+                                <option value="confirmed">Đã xác nhận</option>
+                                <option value="preparing">Đang chuẩn bị</option>
+                                <option value="shipped">Đã gửi hàng</option>
+                                <option value="delivered">Đã giao</option>
+                                <option value="cancelled">Đã hủy</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Mã đơn</th>
+                                <th>Khách hàng</th>
+                                <th>Sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Tổng tiền</th>
+                                <th>Trạng thái</th>
+                                <th>Ngày đặt</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTable">
+                            <!-- Orders will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Products Management -->
+            <div id="products" class="content-section">
+                <div class="section-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <h3 class="section-title">Quản lý sản phẩm</h3>
+                        <button class="btn btn-primary" onclick="showAddProductForm()">
+                            <i class="fas fa-plus"></i> Thêm sản phẩm mới
+                        </button>
+                    </div>
+
+                    <!-- Add Product Form -->
+                    <div id="addProductForm" style="display: none; background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                        <h4>Thêm sản phẩm mới</h4>
+                        <form onsubmit="addProduct(event)">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                <div class="form-group">
+                                    <label class="form-label">Tên sản phẩm</label>
+                                    <input type="text" class="form-input" name="productName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Danh mục</label>
+                                    <select class="form-select" name="category" required>
+                                        <option value="">Chọn danh mục</option>
+                                        <option value="rau-cu-qua">Rau củ quả</option>
+                                        <option value="trai-cay">Trái cây</option>
+                                        <option value="thit-ca">Thịt cá</option>
+                                        <option value="sua-trung">Sữa trứng</option>
+                                        <option value="do-kho">Đồ khô</option>
+                                        <option value="dac-san">Đặc sản</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Giá (₫)</label>
+                                    <input type="number" class="form-input" name="price" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Đơn vị</label>
+                                    <select class="form-select" name="unit" required>
+                                        <option value="kg">Kilogram</option>
+                                        <option value="gram">Gram</option>
+                                        <option value="quả">Quả</option>
+                                        <option value="túi">Túi</option>
+                                        <option value="hộp">Hộp</option>
+                                        <option value="lít">Lít</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Số lượng tồn kho</label>
+                                    <input type="number" class="form-input" name="stock" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Nguồn gốc</label>
+                                    <input type="text" class="form-input" name="origin" placeholder="VD: Đà Lạt, Lâm Đồng">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Mô tả sản phẩm</label>
+                                <textarea class="form-textarea" name="description" rows="3" placeholder="Mô tả chi tiết về sản phẩm..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Hình ảnh sản phẩm</label>
+                                <input type="file" class="form-input" name="images" multiple accept="image/*">
+                            </div>
+                            <div style="text-align: right;">
+                                <button type="button" class="btn btn-outline" onclick="hideAddProductForm()">Hủy</button>
+                                <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Hình ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Danh mục</th>
+                                <th>Giá</th>
+                                <th>Tồn kho</th>
+                                <th>Đã bán</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTable">
+                            <!-- Products will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Inventory Management -->
+            <div id="inventory" class="content-section">
+                <div class="section-card">
+                    <h3 class="section-title">Quản lý kho hàng</h3>
+                    
+                    <div class="stats-grid" style="margin-bottom: 30px;">
+                        <div class="stat-card">
+                            <div class="stat-value" style="color: #f44336;">5</div>
+                            <div class="stat-label">Sản phẩm sắp hết hàng</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" style="color: #ff9800;">12</div>
+                            <div class="stat-label">Sản phẩm cần nhập thêm</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" style="color: #4caf50;">342</div>
+                            <div class="stat-label">Tổng số lượng tồn kho</div>
+                        </div>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Sản phẩm</th>
+                                <th>Tồn kho hiện tại</th>
+                                <th>Đã đặt trước</th>
+                                <th>Có thể bán</th>
+                                <th>Cảnh báo</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryTable">
+                            <!-- Inventory will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Revenue Management -->
+            <div id="revenue" class="content-section">
+                <div class="section-card">
+                    <h3 class="section-title">Báo cáo doanh thu</h3>
+                    
+                    <div class="stats-grid" style="margin-bottom: 30px;">
+                        <div class="stat-card">
+                            <div class="stat-value">2,450,000₫</div>
+                            <div class="stat-label">Doanh thu tháng này</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> +12.5%
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">2,205,000₫</div>
+                            <div class="stat-label">Doanh thu thực tế (sau hoa hồng)</div>
+                            <div class="stat-change">
+                                <i class="fas fa-info-circle"></i> Hoa hồng: 10%
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">15,680₫</div>
+                            <div class="stat-label">Doanh thu trung bình/đơn</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">1,850,000₫</div>
+                            <div class="stat-label">Chờ thanh toán</div>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+
+                    <h4 style="margin: 30px 0 20px;">Lịch sử thanh toán</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Ngày</th>
+                                <th>Mô tả</th>
+                                <th>Doanh thu gốc</th>
+                                <th>Hoa hồng (10%)</th>
+                                <th>Thực nhận</th>
+                                <th>Trạng thái</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paymentHistoryTable">
+                            <!-- Payment history will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Customer Management -->
+            <div id="customers" class="content-section">
+                <div class="section-card">
+                    <h3 class="section-title">Khách hàng của tôi</h3>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Khách hàng</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Tổng đơn hàng</th>
+                                <th>Tổng chi tiêu</th>
+                                <th>Lần mua cuối</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customersTable">
+                            <!-- Customers will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Analytics -->
+            <div id="analytics" class="content-section">
+                <div class="section-card">
+                    <h3 class="section-title">Phân tích kinh doanh</h3>
+                    
+                    <div class="stats-grid" style="margin-bottom: 30px;">
+                        <div class="stat-card">
+                            <div class="stat-value">3.2%</div>
+                            <div class="stat-label">Tỷ lệ chuyển đổi</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">15,680₫</div>
+                            <div class="stat-label">Giá trị đơn hàng trung bình</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">1,247</div>
+                            <div class="stat-label">Lượt xem sản phẩm</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">4.8/5</div>
+                            <div class="stat-label">Đánh giá trung bình</div>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <h4>Sản phẩm bán chạy nhất</h4>
+                            <div class="chart-container">
+                                <canvas id="topProductsChart"></canvas>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>Doanh thu theo danh mục</h4>
+                            <div class="chart-container">
+                                <canvas id="categoryChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings -->
+            <div id="settings" class="content-section">
+                <div class="section-card">
+                    <h3 class="section-title">Cài đặt cửa hàng</h3>
+                    
+                    <form onsubmit="updateSettings(event)">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div class="form-group">
+                                <label class="form-label">Tên cửa hàng</label>
+                                <input type="text" class="form-input" name="storeName" value="Nông Trại Xanh">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Số điện thoại</label>
+                                <input type="tel" class="form-input" name="phone" value="0901234567">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" name="email" value="nongtrai@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Thời gian xử lý đơn hàng</label>
+                                <select class="form-select" name="processingTime">
+                                    <option value="1">1 ngày</option>
+                                    <option value="2" selected>2 ngày</option>
+                                    <option value="3">3 ngày</option>
+                                    <option value="5">5 ngày</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Địa chỉ cửa hàng</label>
+                            <textarea class="form-textarea" name="address" rows="2">123 Đường Nông Nghiệp, Phường 1, Quận 12, TP.HCM</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Mô tả cửa hàng</label>
+                            <textarea class="form-textarea" name="description" rows="3">Chuyên cung cấp nông sản sạch, hữu cơ từ trang trại của chúng tôi. Cam kết chất lượng và an toàn thực phẩm.</textarea>
+                        </div>
+                        
+                        <h4 style="margin: 30px 0 20px;">Cài đặt thông báo</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <label style="display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox" checked> Thông báo đơn hàng mới
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox" checked> Thông báo hết hàng
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox" checked> Báo cáo doanh thu hàng tuần
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 10px;">
+                                <input type="checkbox"> Thông báo đánh giá mới
+                            </label>
+                        </div>
+
+                        <div style="text-align: right; margin-top: 30px;">
+                            <button type="submit" class="btn btn-primary">Lưu cài đặt</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    
+    <script>
+        // Global variables
+        let currentUser = null;
+        let sellerData = {
+            orders: [],
+            products: [],
+            customers: [],
+            revenue: {},
+            inventory: []
+        };
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication
+            checkSellerAuth();
+            
+            // Load initial data
+            loadDashboardData();
+            
+            // Setup navigation
+            setupNavigation();
+            
+            // Setup charts
+            initializeCharts();
+        });
+
+        // Authentication check
+        function checkSellerAuth() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                alert('Vui lòng đăng nhập để truy cập seller dashboard');
+                window.location.href = 'login.html';
+                return false;
+            }
+
+            try {
+                const payload = JSON.parse(atob(token.split('.')[1]));
+                if (payload.role !== 'seller') {
+                    alert('Chỉ seller mới có quyền truy cập dashboard này');
+                    window.location.href = 'home.html';
+                    return false;
+                }
+                currentUser = payload;
+                return true;
+            } catch (error) {
+                console.error('Invalid token:', error);
+                localStorage.removeItem('token');
+                window.location.href = 'login.html';
+                return false;
+            }
+        }
+
+        // Load dashboard data
+        async function loadDashboardData() {
+            try {
+                // Load seller's orders
+                await loadOrders();
+                
+                // Load seller's products
+                await loadProducts();
+                
+                // Load customers
+                await loadCustomers();
+                
+                // Load inventory
+                await loadInventory();
+                
+                // Update dashboard stats
+                updateDashboardStats();
+                
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+            }
+        }
+
+        // Load orders
+        async function loadOrders() {
+            try {
+                // Mock data for demo - in real app, fetch from API with seller filter
+                sellerData.orders = [
+                    {
+                        id: 'ORD001',
+                        customer: 'Nguyễn Văn An',
+                        customerPhone: '0901234567',
+                        products: [{ name: 'Cà chua hữu cơ', quantity: 2, unit: 'kg', price: 25000 }],
+                        total: 50000,
+                        status: 'pending',
+                        orderDate: '2025-01-17',
+                        deliveryDate: '2025-01-19'
+                    },
+                    {
+                        id: 'ORD002',
+                        customer: 'Trần Thị Bình',
+                        customerPhone: '0987654321',
+                        products: [{ name: 'Xoài cát Hoà Lộc', quantity: 1, unit: 'kg', price: 45000 }],
+                        total: 45000,
+                        status: 'confirmed',
+                        orderDate: '2025-01-17',
+                        deliveryDate: '2025-01-18'
+                    },
+                    {
+                        id: 'ORD003',
+                        customer: 'Lê Văn Cường',
+                        customerPhone: '0912345678',
+                        products: [{ name: 'Thịt heo hữu cơ', quantity: 0.5, unit: 'kg', price: 180000 }],
+                        total: 90000,
+                        status: 'delivered',
+                        orderDate: '2025-01-15',
+                        deliveryDate: '2025-01-16'
+                    }
+                ];
+                
+                renderOrdersTable();
+            } catch (error) {
+                console.error('Error loading orders:', error);
+            }
+        }
+
+        // Load products
+        async function loadProducts() {
+            try {
+                // Mock data for demo
+                sellerData.products = [
+                    {
+                        id: 'PROD001',
+                        name: 'Cà chua hữu cơ',
+                        category: 'Rau củ quả',
+                        price: 25000,
+                        unit: 'kg',
+                        stock: 45,
+                        sold: 23,
+                        status: 'active',
+                        image: '/assets/images/ca-chua.jpg'
+                    },
+                    {
+                        id: 'PROD002',
+                        name: 'Xoài cát Hoà Lộc',
+                        category: 'Trái cây',
+                        price: 45000,
+                        unit: 'kg',
+                        stock: 12,
+                        sold: 15,
+                        status: 'active',
+                        image: '/assets/images/xoai-cat-hoa-loc.jpg'
+                    },
+                    {
+                        id: 'PROD003',
+                        name: 'Thịt heo hữu cơ',
+                        category: 'Thịt cá',
+                        price: 180000,
+                        unit: 'kg',
+                        stock: 8,
+                        sold: 7,
+                        status: 'active',
+                        image: '/assets/images/thit-heo-huu-co.jpg'
+                    }
+                ];
+                
+                renderProductsTable();
+            } catch (error) {
+                console.error('Error loading products:', error);
+            }
+        }
+
+        // Load customers
+        async function loadCustomers() {
+            try {
+                sellerData.customers = [
+                    {
+                        id: 'CUST001',
+                        name: 'Nguyễn Văn An',
+                        email: 'an@example.com',
+                        phone: '0901234567',
+                        totalOrders: 5,
+                        totalSpent: 250000,
+                        lastOrder: '2025-01-17'
+                    },
+                    {
+                        id: 'CUST002',
+                        name: 'Trần Thị Bình',
+                        email: 'binh@example.com',
+                        phone: '0987654321',
+                        totalOrders: 3,
+                        totalSpent: 135000,
+                        lastOrder: '2025-01-17'
+                    }
+                ];
+                
+                renderCustomersTable();
+            } catch (error) {
+                console.error('Error loading customers:', error);
+            }
+        }
+
+        // Load inventory
+        async function loadInventory() {
+            try {
+                sellerData.inventory = [
+                    {
+                        productId: 'PROD001',
+                        name: 'Cà chua hữu cơ',
+                        currentStock: 45,
+                        reserved: 8,
+                        available: 37,
+                        warning: false
+                    },
+                    {
+                        productId: 'PROD002',
+                        name: 'Xoài cát Hoà Lộc',
+                        currentStock: 12,
+                        reserved: 5,
+                        available: 7,
+                        warning: true
+                    },
+                    {
+                        productId: 'PROD003',
+                        name: 'Thịt heo hữu cơ',
+                        currentStock: 8,
+                        reserved: 2,
+                        available: 6,
+                        warning: true
+                    }
+                ];
+                
+                renderInventoryTable();
+            } catch (error) {
+                console.error('Error loading inventory:', error);
+            }
+        }
+
+        // Update dashboard stats
+        function updateDashboardStats() {
+            // Calculate stats from data
+            const totalRevenue = sellerData.orders.reduce((sum, order) => sum + order.total, 0);
+            const totalOrders = sellerData.orders.length;
+            const totalProducts = sellerData.products.length;
+            const totalCustomers = sellerData.customers.length;
+            
+            // Update DOM
+            document.getElementById('totalRevenue').textContent = formatCurrency(totalRevenue);
+            document.getElementById('totalOrders').textContent = totalOrders;
+            document.getElementById('totalProducts').textContent = totalProducts;
+            document.getElementById('totalCustomers').textContent = totalCustomers;
+        }
+
+        // Render tables
+        function renderOrdersTable() {
+            const tbody = document.getElementById('ordersTable');
+            tbody.innerHTML = sellerData.orders.map(order => `
+                <tr>
+                    <td>#${order.id}</td>
+                    <td>${order.customer}</td>
+                    <td>${order.products.map(p => `${p.name} (${p.quantity}${p.unit})`).join('<br>')}</td>
+                    <td>${order.products.reduce((sum, p) => sum + p.quantity, 0)}</td>
+                    <td>${formatCurrency(order.total)}</td>
+                    <td><span class="status-badge status-${order.status}">${getStatusText(order.status)}</span></td>
+                    <td>${formatDate(order.orderDate)}</td>
+                    <td>
+                        ${getOrderActions(order)}
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderProductsTable() {
+            const tbody = document.getElementById('productsTable');
+            tbody.innerHTML = sellerData.products.map(product => `
+                <tr>
+                    <td><img src="${product.image}" alt="${product.name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 8px;"></td>
+                    <td>${product.name}</td>
+                    <td>${product.category}</td>
+                    <td>${formatCurrency(product.price)}/${product.unit}</td>
+                    <td>${product.stock}</td>
+                    <td>${product.sold}</td>
+                    <td><span class="status-badge status-${product.status}">${product.status === 'active' ? 'Đang bán' : 'Tạm dừng'}</span></td>
+                    <td>
+                        <button class="action-btn edit" onclick="editProduct('${product.id}')">Sửa</button>
+                        <button class="action-btn delete" onclick="deleteProduct('${product.id}')">Xóa</button>
+                        <button class="action-btn view" onclick="viewProduct('${product.id}')">Xem</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderCustomersTable() {
+            const tbody = document.getElementById('customersTable');
+            tbody.innerHTML = sellerData.customers.map(customer => `
+                <tr>
+                    <td>${customer.name}</td>
+                    <td>${customer.email}</td>
+                    <td>${customer.phone}</td>
+                    <td>${customer.totalOrders}</td>
+                    <td>${formatCurrency(customer.totalSpent)}</td>
+                    <td>${formatDate(customer.lastOrder)}</td>
+                    <td>
+                        <button class="action-btn view" onclick="viewCustomer('${customer.id}')">Xem</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function renderInventoryTable() {
+            const tbody = document.getElementById('inventoryTable');
+            tbody.innerHTML = sellerData.inventory.map(item => `
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${item.currentStock}</td>
+                    <td>${item.reserved}</td>
+                    <td>${item.available}</td>
+                    <td>
+                        ${item.warning ? '<span style="color: #f44336;"><i class="fas fa-exclamation-triangle"></i> Sắp hết hàng</span>' : '<span style="color: #4caf50;"><i class="fas fa-check"></i> Đủ hàng</span>'}
+                    </td>
+                    <td>
+                        <button class="action-btn edit" onclick="updateStock('${item.productId}')">Cập nhật</button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Navigation
+        function setupNavigation() {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const section = this.getAttribute('data-section');
+                    if (section) {
+                        showSection(section);
+                    }
+                });
+            });
+        }
+
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`[data-section="${sectionName}"]`).classList.add('active');
+            
+            // Update page title
+            const titles = {
+                dashboard: 'Tổng quan',
+                orders: 'Quản lý đơn hàng',
+                products: 'Quản lý sản phẩm',
+                inventory: 'Quản lý kho',
+                revenue: 'Doanh thu',
+                customers: 'Khách hàng',
+                analytics: 'Phân tích',
+                settings: 'Cài đặt'
+            };
+            
+            document.getElementById('pageTitle').textContent = titles[sectionName] || 'Dashboard';
+        }
+
+        // Utility functions
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(amount).replace('₫', '₫');
+        }
+
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString('vi-VN');
+        }
+
+        function getStatusText(status) {
+            const statusMap = {
+                pending: 'Chờ xác nhận',
+                confirmed: 'Đã xác nhận',
+                preparing: 'Đang chuẩn bị',
+                shipped: 'Đã gửi hàng',
+                delivered: 'Đã giao',
+                cancelled: 'Đã hủy'
+            };
+            return statusMap[status] || status;
+        }
+
+        function getOrderActions(order) {
+            switch (order.status) {
+                case 'pending':
+                    return `
+                        <button class="action-btn edit" onclick="confirmOrder('${order.id}')">Xác nhận</button>
+                        <button class="action-btn delete" onclick="cancelOrder('${order.id}')">Hủy</button>
+                        <button class="action-btn view" onclick="viewOrder('${order.id}')">Xem</button>
+                    `;
+                case 'confirmed':
+                    return `
+                        <button class="action-btn edit" onclick="prepareOrder('${order.id}')">Chuẩn bị</button>
+                        <button class="action-btn view" onclick="viewOrder('${order.id}')">Xem</button>
+                    `;
+                case 'preparing':
+                    return `
+                        <button class="action-btn edit" onclick="shipOrder('${order.id}')">Gửi hàng</button>
+                        <button class="action-btn view" onclick="viewOrder('${order.id}')">Xem</button>
+                    `;
+                default:
+                    return `<button class="action-btn view" onclick="viewOrder('${order.id}')">Xem</button>`;
+            }
+        }
+
+        // Order actions
+        function confirmOrder(orderId) {
+            if (confirm('Xác nhận đơn hàng này?')) {
+                updateOrderStatus(orderId, 'confirmed');
+                showNotification('Đã xác nhận đơn hàng #' + orderId, 'success');
+            }
+        }
+
+        function prepareOrder(orderId) {
+            if (confirm('Đánh dấu đơn hàng đang chuẩn bị?')) {
+                updateOrderStatus(orderId, 'preparing');
+                showNotification('Đang chuẩn bị đơn hàng #' + orderId, 'success');
+            }
+        }
+
+        function shipOrder(orderId) {
+            if (confirm('Đánh dấu đơn hàng đã gửi?')) {
+                updateOrderStatus(orderId, 'shipped');
+                showNotification('Đã gửi đơn hàng #' + orderId, 'success');
+            }
+        }
+
+        function cancelOrder(orderId) {
+            if (confirm('Hủy đơn hàng này? Hành động không thể hoàn tác.')) {
+                updateOrderStatus(orderId, 'cancelled');
+                showNotification('Đã hủy đơn hàng #' + orderId, 'warning');
+            }
+        }
+
+        function updateOrderStatus(orderId, newStatus) {
+            const order = sellerData.orders.find(o => o.id === orderId);
+            if (order) {
+                order.status = newStatus;
+                renderOrdersTable();
+                updateDashboardStats();
+            }
+        }
+
+        function viewOrder(orderId) {
+            const order = sellerData.orders.find(o => o.id === orderId);
+            if (order) {
+                alert(`Chi tiết đơn hàng #${orderId}:\n\nKhách hàng: ${order.customer}\nSản phẩm: ${order.products.map(p => `${p.name} (${p.quantity}${p.unit})`).join(', ')}\nTổng tiền: ${formatCurrency(order.total)}\nTrạng thái: ${getStatusText(order.status)}`);
+            }
+        }
+
+        // Product actions
+        function showAddProductForm() {
+            document.getElementById('addProductForm').style.display = 'block';
+        }
+
+        function hideAddProductForm() {
+            document.getElementById('addProductForm').style.display = 'none';
+        }
+
+        function addProduct(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            
+            const newProduct = {
+                id: 'PROD' + String(Date.now()).slice(-3),
+                name: formData.get('productName'),
+                category: formData.get('category'),
+                price: parseInt(formData.get('price')),
+                unit: formData.get('unit'),
+                stock: parseInt(formData.get('stock')),
+                sold: 0,
+                status: 'active',
+                image: '/assets/images/default-product.jpg' // Default image
+            };
+            
+            sellerData.products.push(newProduct);
+            renderProductsTable();
+            hideAddProductForm();
+            showNotification('Đã thêm sản phẩm mới thành công!', 'success');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        function editProduct(productId) {
+            alert('Chức năng chỉnh sửa sản phẩm - Coming soon!');
+        }
+
+        function deleteProduct(productId) {
+            if (confirm('Xóa sản phẩm này? Hành động không thể hoàn tác.')) {
+                sellerData.products = sellerData.products.filter(p => p.id !== productId);
+                renderProductsTable();
+                showNotification('Đã xóa sản phẩm thành công!', 'success');
+            }
+        }
+
+        function viewProduct(productId) {
+            const product = sellerData.products.find(p => p.id === productId);
+            if (product) {
+                alert(`Chi tiết sản phẩm:\n\nTên: ${product.name}\nDanh mục: ${product.category}\nGiá: ${formatCurrency(product.price)}/${product.unit}\nTồn kho: ${product.stock}\nĐã bán: ${product.sold}`);
+            }
+        }
+
+        // Filter functions
+        function filterOrders(status) {
+            if (status === 'all') {
+                renderOrdersTable();
+            } else {
+                const tbody = document.getElementById('ordersTable');
+                const filteredOrders = sellerData.orders.filter(order => order.status === status);
+                tbody.innerHTML = filteredOrders.map(order => `
+                    <tr>
+                        <td>#${order.id}</td>
+                        <td>${order.customer}</td>
+                        <td>${order.products.map(p => `${p.name} (${p.quantity}${p.unit})`).join('<br>')}</td>
+                        <td>${order.products.reduce((sum, p) => sum + p.quantity, 0)}</td>
+                        <td>${formatCurrency(order.total)}</td>
+                        <td><span class="status-badge status-${order.status}">${getStatusText(order.status)}</span></td>
+                        <td>${formatDate(order.orderDate)}</td>
+                        <td>${getOrderActions(order)}</td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        // Other functions
+        function updateStock(productId) {
+            const newStock = prompt('Nhập số lượng tồn kho mới:');
+            if (newStock && !isNaN(newStock)) {
+                const product = sellerData.products.find(p => p.id === productId);
+                if (product) {
+                    product.stock = parseInt(newStock);
+                    renderProductsTable();
+                    loadInventory(); // Refresh inventory
+                    showNotification('Đã cập nhật tồn kho thành công!', 'success');
+                }
+            }
+        }
+
+        function viewCustomer(customerId) {
+            const customer = sellerData.customers.find(c => c.id === customerId);
+            if (customer) {
+                alert(`Chi tiết khách hàng:\n\nTên: ${customer.name}\nEmail: ${customer.email}\nSĐT: ${customer.phone}\nTổng đơn: ${customer.totalOrders}\nTổng chi tiêu: ${formatCurrency(customer.totalSpent)}`);
+            }
+        }
+
+        function updateSettings(event) {
+            event.preventDefault();
+            showNotification('Đã lưu cài đặt thành công!', 'success');
+        }
+
+        function exportData() {
+            alert('Chức năng xuất báo cáo - Coming soon!');
+        }
+
+        function logout() {
+            if (confirm('Bạn có chắc muốn đăng xuất?')) {
+                localStorage.removeItem('token');
+                window.location.href = 'login.html';
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            // Simple notification - can be enhanced with a proper notification library
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                background: ${type === 'success' ? '#4CAF50' : type === 'warning' ? '#FF9800' : '#2196F3'};
+                color: white;
+                border-radius: 8px;
+                z-index: 10000;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Initialize charts
+        function initializeCharts() {
+            // Revenue Chart
+            if (document.getElementById('revenueChart')) {
+                const ctx = document.getElementById('revenueChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'],
+                        datasets: [{
+                            label: 'Doanh thu (₫)',
+                            data: [150000, 200000, 180000, 250000, 300000, 280000, 350000],
+                            borderColor: '#667eea',
+                            backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                            borderWidth: 3,
+                            fill: true
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return formatCurrency(value);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Payment history data
+        function renderPaymentHistory() {
+            const tbody = document.getElementById('paymentHistoryTable');
+            const paymentHistory = [
+                {
+                    date: '2025-01-15',
+                    description: 'Doanh thu tuần 1/2025',
+                    grossRevenue: 500000,
+                    commission: 50000,
+                    netRevenue: 450000,
+                    status: 'paid'
+                },
+                {
+                    date: '2025-01-08',
+                    description: 'Doanh thu tuần 52/2024',
+                    grossRevenue: 750000,
+                    commission: 75000,
+                    netRevenue: 675000,
+                    status: 'paid'
+                },
+                {
+                    date: '2025-01-17',
+                    description: 'Doanh thu hiện tại',
+                    grossRevenue: 1850000,
+                    commission: 185000,
+                    netRevenue: 1665000,
+                    status: 'pending'
+                }
+            ];
+            
+            tbody.innerHTML = paymentHistory.map(payment => `
+                <tr>
+                    <td>${formatDate(payment.date)}</td>
+                    <td>${payment.description}</td>
+                    <td>${formatCurrency(payment.grossRevenue)}</td>
+                    <td>${formatCurrency(payment.commission)}</td>
+                    <td>${formatCurrency(payment.netRevenue)}</td>
+                    <td>
+                        <span class="status-badge status-${payment.status === 'paid' ? 'delivered' : 'pending'}">
+                            ${payment.status === 'paid' ? 'Đã thanh toán' : 'Chờ thanh toán'}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Load payment history when revenue section is shown
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (document.getElementById('paymentHistoryTable')) {
+                    renderPaymentHistory();
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 

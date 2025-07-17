@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\logs\\.9efae7b9265ea1274ba6ee0414f77ffa3f423a18-audit.json",
+    "files": [
+        {
+            "date": 1752109263428,
+            "name": "C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\logs\\http-2025-07-10.log",
+            "hash": "3dd09ad01ff893506ed4b4f989101651d87b0d9d7633e6d61a352cd9e8727e45"
+        },
+        {
+            "date": 1752579636564,
+            "name": "C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\logs\\http-2025-07-15.log",
+            "hash": "02c52cf47e2fcf7843097931115b88a84e2a729d9a686f8f00e790367b40f808"
+        },
+        {
+            "date": 1752655146079,
+            "name": "C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\logs\\http-2025-07-16.log",
+            "hash": "4b2c9c069e55c29bcddc99c9b7646a070b1ae8f36d27eeb9e1c468f1a12e02c4"
+        }
+    ],
+    "hashType": "sha256"
+}

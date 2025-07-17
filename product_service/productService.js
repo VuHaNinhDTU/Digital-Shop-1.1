@@ -14,11 +14,14 @@ class ProductService {
     return errors;
   }
   async createProduct(data) {
+    console.log('📝 Creating product with data:', data);
     const errors = this.validateProductData(data);
     if (errors.length) return { errors };
     
     // Tạo sản phẩm trong DB
+    console.log('💾 Saving product to database...');
     const product = await repo.create(data);
+    console.log('✅ Product saved to database:', product._id);
     
     // Ghi nhận truy xuất nguồn gốc lên blockchain
     try {
@@ -42,10 +45,16 @@ class ProductService {
     return repo.findAll(filters);
   }
   async updateProduct(id, data) {
-    return repo.update(id, data);
+    console.log(`📝 Updating product ${id} with data:`, data);
+    const result = await repo.update(id, data);
+    console.log('✅ Product updated:', result?._id);
+    return result;
   }
   async deleteProduct(id) {
-    return repo.delete(id);
+    console.log(`🗑️ Deleting product ${id}`);
+    const result = await repo.delete(id);
+    console.log('✅ Product deleted:', result?._id);
+    return result;
   }
   async getProductTrace(productId) {
     try {

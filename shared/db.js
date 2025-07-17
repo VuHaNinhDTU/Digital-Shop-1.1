@@ -8,10 +8,7 @@ async function connectWithRetry(retries = 5, delay = 2000) {
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       if (!isConnected) {
-        await mongoose.connect(MONGODB_URI, {
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
-        });
+        await mongoose.connect(MONGODB_URI);
         isConnected = true;
         console.log('MongoDB connected');
       }

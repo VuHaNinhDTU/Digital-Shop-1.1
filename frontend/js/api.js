@@ -4,9 +4,9 @@
 class ApiClient {
   constructor() {
     this.baseUrls = {
-      products: 'http://localhost:3001/api',
-      orders: 'http://localhost:3004/api', 
-      users: 'http://localhost:3003/api'
+      products: 'http://localhost:3000/api', // Changed to API Gateway
+      orders: 'http://localhost:3000/api',   // Changed to API Gateway
+      users: 'http://localhost:3000/api'     // Changed to API Gateway
     };
     this.defaultHeaders = {
       'Content-Type': 'application/json'

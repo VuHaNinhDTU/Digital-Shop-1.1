@@ -15,9 +15,41 @@ app.use((req, res, next) => {
 });
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/cho-nong-san-so', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/cho-nong-san-so');
+
+// Health check endpoint
+app.get('/health', async (req, res) => {
+  try {
+    // Kiểm tra kết nối database
+    const dbState = mongoose.connection.readyState;
+    const dbStatus = dbState === 1 ? 'connected' : dbState === 2 ? 'connecting' : 'disconnected';
+    
+    const healthStatus = {
+      status: dbState === 1 ? 'healthy' : 'unhealthy',
+      timestamp: new Date().toISOString(),
+      service: 'order-service',
+      version: '1.0.0',
+      uptime: process.uptime(),
+      database: {
+        status: dbStatus,
+        name: 'cho-nong-san-so'
+      },
+      memory: {
+        used: Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + ' MB',
+        total: Math.round(process.memoryUsage().heapTotal / 1024 / 1024) + ' MB'
+      }
+    };
+
+    const statusCode = healthStatus.status === 'healthy' ? 200 : 503;
+    res.status(statusCode).json(healthStatus);
+  } catch (error) {
+    res.status(503).json({
+      status: 'unhealthy',
+      timestamp: new Date().toISOString(),
+      service: 'order-service',
+      error: error.message
+    });
+  }
 });
 
 app.post('/api/orders', (req, res) => controller.create(req, res));

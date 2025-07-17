@@ -4,9 +4,7 @@ const logger = require('./logger');
 
 // Tạo connection options
 const connectionOptions = {
-  ...config.database.options,
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+  ...config.database.options
 };
 
 // Connection state tracking

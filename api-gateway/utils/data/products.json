@@ -1,19 +1,5 @@
 [
   {
-    "_id": "6867036d5f28fd6e92b860fe",
-    "name": "C� chua tuoi ngon d� ch?nh s?a",
-    "price": 35000,
-    "category": "Rau c? qu?",
-    "description": "C� chua tuoi ngon, d� c?p nh?t gi�",
-    "unit": "kg",
-    "imageUrls": [
-      "/uploads/1751581549580-615466202-ca-chua.jpg"
-    ],
-    "status": "active",
-    "createdAt": "2025-07-03T22:25:49.596Z",
-    "updatedAt": "2025-07-03T22:25:49.596Z"
-  },
-  {
     "_id": "686708376a8909574687f8fd",
     "name": "Sữa Tươi",
     "price": 50000,
@@ -96,5 +82,34 @@
     "status": "active",
     "createdAt": "2025-07-16T14:43:45.308Z",
     "updatedAt": "2025-07-16T14:43:45.308Z"
+  },
+  {
+    "_id": "6877e29787e66a6d2ee669d5",
+    "name": "cà chua",
+    "price": 2000,
+    "category": "Rau củ quả",
+    "description": "cachua",
+    "unit": "quả",
+    "imageUrls": [
+      "/uploads/1752687255939-987191710-ca-chua-2.jpg"
+    ],
+    "status": "active",
+    "createdAt": "2025-07-16T17:34:15.952Z",
+    "updatedAt": "2025-07-16T17:34:15.952Z"
+  },
+  {
+    "_id": "687857e632227896eadce873",
+    "name": "Táo ngố",
+    "price": 20000,
+    "category": "Trái cây",
+    "description": "Táo ngố biến hình ù ù ẹc ẹc",
+    "unit": "kg",
+    "imageUrls": [
+      "/uploads/1752717286475-91083121-tao-xanh-co-tac-dung-gi-an-tao-xanh-tot-cho-da-nhu-the-nao-3-1603171393-936-width640height429.jpg"
+    ],
+    "blockchainHash": "0x4da8dd0c23dfc",
+    "status": "active",
+    "createdAt": "2025-07-17T01:54:46.494Z",
+    "updatedAt": "2025-07-17T01:54:46.494Z"
   }
 ]

@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\logs\\.7f67ecba6adf1a1213cefaf81831e9bcee00e983-audit.json",
+    "files": [
+        {
+            "date": 1752685164990,
+            "name": "C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\logs\\error-2025-07-16.log",
+            "hash": "f0452bb21be3fe503b8993c78c4ed4b8c8d1af0d7917a56affa7233f5c70c525"
+        },
+        {
+            "date": 1752685463400,
+            "name": "C:\\Users\\MSI GF\\OneDrive\\Desktop\\Digital Shop 1.0\\Digital-Shop\\api-gateway\\logs\\error-2025-07-17.log",
+            "hash": "557ee78ce6367368a00bd910fd088efd801980c60f5871f44fe33fc6ca947da7"
+        }
+    ],
+    "hashType": "sha256"
+}

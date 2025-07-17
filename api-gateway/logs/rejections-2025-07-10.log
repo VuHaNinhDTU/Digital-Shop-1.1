@@ -1,0 +1,142 @@
+{
+  error: TypeError: Cannot read properties of undefined (reading 'get')
+      at CacheMiddleware.json (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\node_modules\express\lib\response.js:268:20)
+      at CacheMiddleware.<anonymous> (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\middleware\cacheMiddleware.js:126:31)
+      at ProxyServer.onError (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\index.js:172:23)
+      at ProxyServer.emit (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\node_modules\eventemitter3\index.js:210:27)
+      at ClientRequest.proxyError (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\node_modules\http-proxy\lib\http-proxy\passes\web-incoming.js:165:18)
+      at ClientRequest.emit (node:events:536:35)
+      at emitErrorEvent (node:_http_client:104:11)
+      at Socket.socketErrorListener (node:_http_client:518:5)
+      at Socket.emit (node:events:524:28)
+      at emitErrorNT (node:internal/streams/destroy:170:8),
+  level: 'error',
+  message: "unhandledRejection: Cannot read properties of undefined (reading 'get')\n" +
+    "TypeError: Cannot read properties of undefined (reading 'get')\n" +
+    '    at CacheMiddleware.json (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\node_modules\\express\\lib\\response.js:268:20)\n' +
+    '    at CacheMiddleware.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\middleware\\cacheMiddleware.js:126:31)\n' +
+    '    at ProxyServer.onError (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:172:23)\n' +
+    '    at ProxyServer.emit (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\node_modules\\eventemitter3\\index.js:210:27)\n' +
+    '    at ClientRequest.proxyError (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\node_modules\\http-proxy\\lib\\http-proxy\\passes\\web-incoming.js:165:18)\n' +
+    '    at ClientRequest.emit (node:events:536:35)\n' +
+    '    at emitErrorEvent (node:_http_client:104:11)\n' +
+    '    at Socket.socketErrorListener (node:_http_client:518:5)\n' +
+    '    at Socket.emit (node:events:524:28)\n' +
+    '    at emitErrorNT (node:internal/streams/destroy:170:8)',
+  stack: "TypeError: Cannot read properties of undefined (reading 'get')\n" +
+    '    at CacheMiddleware.json (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\node_modules\\express\\lib\\response.js:268:20)\n' +
+    '    at CacheMiddleware.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\middleware\\cacheMiddleware.js:126:31)\n' +
+    '    at ProxyServer.onError (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:172:23)\n' +
+    '    at ProxyServer.emit (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\node_modules\\eventemitter3\\index.js:210:27)\n' +
+    '    at ClientRequest.proxyError (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\node_modules\\http-proxy\\lib\\http-proxy\\passes\\web-incoming.js:165:18)\n' +
+    '    at ClientRequest.emit (node:events:536:35)\n' +
+    '    at emitErrorEvent (node:_http_client:104:11)\n' +
+    '    at Socket.socketErrorListener (node:_http_client:518:5)\n' +
+    '    at Socket.emit (node:events:524:28)\n' +
+    '    at emitErrorNT (node:internal/streams/destroy:170:8)',
+  rejection: true,
+  date: 'Thu Jul 10 2025 08:07:29 GMT+0700 (Indochina Time)',
+  process: {
+    pid: 20784,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway',
+    execPath: 'E:\\Coding Resource\\Node.js\\node.exe',
+    version: 'v22.13.0',
+    argv: [
+      'E:\\Coding Resource\\Node.js\\node.exe',
+      'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js'
+    ],
+    memoryUsage: {
+      rss: 78389248,
+      heapTotal: 35155968,
+      heapUsed: 31794312,
+      external: 21859366,
+      arrayBuffers: 18344737
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 537681.843 },
+  trace: [
+    {
+      column: 20,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\node_modules\\express\\lib\\response.js',
+      function: 'CacheMiddleware.json',
+      line: 268,
+      method: 'json',
+      native: false
+    },
+    {
+      column: 31,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\middleware\\cacheMiddleware.js',
+      function: null,
+      line: 126,
+      method: null,
+      native: false
+    },
+    {
+      column: 23,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js',
+      function: 'ProxyServer.onError',
+      line: 172,
+      method: 'onError',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\node_modules\\eventemitter3\\index.js',
+      function: 'ProxyServer.emit',
+      line: 210,
+      method: 'emit',
+      native: false
+    },
+    {
+      column: 18,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\node_modules\\http-proxy\\lib\\http-proxy\\passes\\web-incoming.js',
+      function: 'ClientRequest.proxyError',
+      line: 165,
+      method: 'proxyError',
+      native: false
+    },
+    {
+      column: 35,
+      file: 'node:events',
+      function: 'ClientRequest.emit',
+      line: 536,
+      method: 'emit',
+      native: false
+    },
+    {
+      column: 11,
+      file: 'node:_http_client',
+      function: 'emitErrorEvent',
+      line: 104,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:_http_client',
+      function: 'Socket.socketErrorListener',
+      line: 518,
+      method: 'socketErrorListener',
+      native: false
+    },
+    {
+      column: 28,
+      file: 'node:events',
+      function: 'Socket.emit',
+      line: 524,
+      method: 'emit',
+      native: false
+    },
+    {
+      column: 8,
+      file: 'node:internal/streams/destroy',
+      function: 'emitErrorNT',
+      line: 170,
+      method: null,
+      native: false
+    }
+  ],
+  timestamp: '2025-07-10 08:07:29'
+}

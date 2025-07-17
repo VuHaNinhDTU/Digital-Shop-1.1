@@ -34,6 +34,7 @@ const dashboardRoutes = require('./routes/dashboard');
 const apiRoutes = require('./routes/api');
 const healthRoutes = require('./routes/health');
 const authRoutes = require('./routes/auth');
+const sellerRoutes = require('./routes/seller');
 
 // Import JWT auth middleware
 const jwtAuth = require('./middleware/jwtAuth');
@@ -760,6 +761,9 @@ app.use('/api/analytics', analyticsRoutes);
 
 // Gateway API routes
 app.use('/api/gateway', apiRoutes);
+
+// Seller routes (with authentication)
+app.use('/api/seller', verifyToken, sellerRoutes);
 
 // Users endpoints
 app.get('/api/users', async (req, res) => {

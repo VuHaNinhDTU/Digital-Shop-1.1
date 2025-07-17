@@ -1,0 +1,248 @@
+{
+  error: Error: Cannot find module './utils/simpleDB'
+  Require stack:
+  - C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\index.js
+      at Function._resolveFilename (node:internal/modules/cjs/loader:1244:15)
+      at Function._load (node:internal/modules/cjs/loader:1070:27)
+      at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+      at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)
+      at Module.require (node:internal/modules/cjs/loader:1335:12)
+      at require (node:internal/modules/helpers:136:16)
+      at Object.<anonymous> (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\index.js:16:23)
+      at Module._compile (node:internal/modules/cjs/loader:1562:14)
+      at Object..js (node:internal/modules/cjs/loader:1699:10)
+      at Module.load (node:internal/modules/cjs/loader:1313:32) {
+    code: 'MODULE_NOT_FOUND',
+    requireStack: [
+      'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js'
+    ]
+  },
+  level: 'error',
+  message: "uncaughtException: Cannot find module './utils/simpleDB'\n" +
+    'Require stack:\n' +
+    '- C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js\n' +
+    "Error: Cannot find module './utils/simpleDB'\n" +
+    'Require stack:\n' +
+    '- C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1244:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1070:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1335:12)\n' +
+    '    at require (node:internal/modules/helpers:136:16)\n' +
+    '    at Object.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:16:23)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1562:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1699:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1313:32)',
+  stack: "Error: Cannot find module './utils/simpleDB'\n" +
+    'Require stack:\n' +
+    '- C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js\n' +
+    '    at Function._resolveFilename (node:internal/modules/cjs/loader:1244:15)\n' +
+    '    at Function._load (node:internal/modules/cjs/loader:1070:27)\n' +
+    '    at TracingChannel.traceSync (node:diagnostics_channel:322:14)\n' +
+    '    at wrapModuleLoad (node:internal/modules/cjs/loader:217:24)\n' +
+    '    at Module.require (node:internal/modules/cjs/loader:1335:12)\n' +
+    '    at require (node:internal/modules/helpers:136:16)\n' +
+    '    at Object.<anonymous> (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:16:23)\n' +
+    '    at Module._compile (node:internal/modules/cjs/loader:1562:14)\n' +
+    '    at Object..js (node:internal/modules/cjs/loader:1699:10)\n' +
+    '    at Module.load (node:internal/modules/cjs/loader:1313:32)',
+  exception: true,
+  date: 'Thu Jul 10 2025 08:04:12 GMT+0700 (Indochina Time)',
+  process: {
+    pid: 17384,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway',
+    execPath: 'E:\\Coding Resource\\Node.js\\node.exe',
+    version: 'v22.13.0',
+    argv: [
+      'E:\\Coding Resource\\Node.js\\node.exe',
+      'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js'
+    ],
+    memoryUsage: {
+      rss: 55099392,
+      heapTotal: 20905984,
+      heapUsed: 15154320,
+      external: 2317782,
+      arrayBuffers: 16835
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 537484.718 },
+  trace: [
+    {
+      column: 15,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._resolveFilename',
+      line: 1244,
+      method: '_resolveFilename',
+      native: false
+    },
+    {
+      column: 27,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Function._load',
+      line: 1070,
+      method: '_load',
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:diagnostics_channel',
+      function: 'TracingChannel.traceSync',
+      line: 322,
+      method: 'traceSync',
+      native: false
+    },
+    {
+      column: 24,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'wrapModuleLoad',
+      line: 217,
+      method: null,
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.require',
+      line: 1335,
+      method: 'require',
+      native: false
+    },
+    {
+      column: 16,
+      file: 'node:internal/modules/helpers',
+      function: 'require',
+      line: 136,
+      method: null,
+      native: false
+    },
+    {
+      column: 23,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js',
+      function: null,
+      line: 16,
+      method: null,
+      native: false
+    },
+    {
+      column: 14,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module._compile',
+      line: 1562,
+      method: '_compile',
+      native: false
+    },
+    {
+      column: 10,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Object..js',
+      line: 1699,
+      method: '.js',
+      native: false
+    },
+    {
+      column: 32,
+      file: 'node:internal/modules/cjs/loader',
+      function: 'Module.load',
+      line: 1313,
+      method: 'load',
+      native: false
+    }
+  ],
+  timestamp: '2025-07-10 08:04:12'
+}
+{
+  error: Error: listen EADDRINUSE: address already in use :::3000
+      at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+      at listenInCluster (node:net:1994:12)
+      at Server.listen (node:net:2099:7)
+      at startServer (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\index.js:352:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+    code: 'EADDRINUSE',
+    errno: -4091,
+    syscall: 'listen',
+    address: '::',
+    port: 3000
+  },
+  level: 'error',
+  message: 'uncaughtException: listen EADDRINUSE: address already in use :::3000\n' +
+    'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n' +
+    '    at listenInCluster (node:net:1994:12)\n' +
+    '    at Server.listen (node:net:2099:7)\n' +
+    '    at startServer (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:352:12)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)',
+  stack: 'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n' +
+    '    at listenInCluster (node:net:1994:12)\n' +
+    '    at Server.listen (node:net:2099:7)\n' +
+    '    at startServer (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:352:12)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)',
+  exception: true,
+  date: 'Thu Jul 10 2025 09:29:59 GMT+0700 (Indochina Time)',
+  process: {
+    pid: 13856,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway',
+    execPath: 'E:\\Coding Resource\\Node.js\\node.exe',
+    version: 'v22.13.0',
+    argv: [
+      'E:\\Coding Resource\\Node.js\\node.exe',
+      'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js'
+    ],
+    memoryUsage: {
+      rss: 132878336,
+      heapTotal: 88772608,
+      heapUsed: 45698768,
+      external: 40058635,
+      arrayBuffers: 36569084
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 542632.437 },
+  trace: [
+    {
+      column: 16,
+      file: 'node:net',
+      function: 'Server.setupListenHandle [as _listen2]',
+      line: 1937,
+      method: 'setupListenHandle [as _listen2]',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:net',
+      function: 'listenInCluster',
+      line: 1994,
+      method: null,
+      native: false
+    },
+    {
+      column: 7,
+      file: 'node:net',
+      function: 'Server.listen',
+      line: 2099,
+      method: 'listen',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js',
+      function: 'startServer',
+      line: 352,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 105,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-07-10 09:29:59'
+}

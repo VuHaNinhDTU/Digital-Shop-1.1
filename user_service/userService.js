@@ -13,10 +13,14 @@ class UserService {
     return errors;
   }
   async register(data) {
+    console.log('📝 Registering user with data:', { ...data, password: '[HIDDEN]' });
     const errors = this.validateUserData(data);
     if (errors.length) return { errors };
     if (await repo.findByUsername(data.username)) return { errors: ['Username exists'] };
-    return { user: await repo.create(data) };
+    console.log('💾 Saving user to database...');
+    const user = await repo.create(data);
+    console.log('✅ User saved to database:', user._id);
+    return { user };
   }
   async login({ username, password }) {
     const user = await repo.findByUsername(username);
@@ -30,10 +34,16 @@ class UserService {
     return repo.findAll();
   }
   async updateUser(id, data) {
-    return repo.update(id, data);
+    console.log(`📝 Updating user ${id} with data:`, { ...data, password: data.password ? '[HIDDEN]' : undefined });
+    const result = await repo.update(id, data);
+    console.log('✅ User updated:', result?._id);
+    return result;
   }
   async deleteUser(id) {
-    return repo.delete(id);
+    console.log(`🗑️ Deleting user ${id}`);
+    const result = await repo.delete(id);
+    console.log('✅ User deleted:', result?._id);
+    return result;
   }
 }
 

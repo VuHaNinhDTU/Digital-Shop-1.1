@@ -128,6 +128,7 @@
             <li class="nav-item"><a href="order.html" class="nav-link"><i class="fa fa-receipt"></i> Đơn hàng</a></li>
             <li class="nav-item"><a href="user.html" class="nav-link"><i class="fa fa-user"></i> Tài khoản</a></li>
             <li class="nav-item"><a href="cart.html" class="nav-link"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+            <li class="nav-item" id="sellerDashboardNav" style="display: none;"><a href="seller-dashboard.html" class="nav-link" style="background:#667eea;color:#fff;border-radius:4px;padding:6px 16px;margin-left:8px;"><i class="fa fa-store"></i> Dashboard</a></li>
             <li class="nav-item"><a href="add-product.html" class="nav-link" style="background:var(--main-green);color:#fff;border-radius:4px;padding:6px 16px;margin-left:8px;"><i class="fa fa-plus"></i> Bán</a></li>
             <li class="nav-item"><a href="/login" class="nav-link logout-btn" onclick="logout()" style="background:#dc3545;color:#fff;border-radius:4px;padding:6px 16px;margin-left:8px;"><i class="fa fa-sign-out-alt"></i> Đăng xuất</a></li>
           </ul>
@@ -502,6 +503,14 @@
             successMsg.parentNode.removeChild(successMsg);
           }
         }, 3000);
+        
+        // Show seller dashboard link if user is a seller
+        if (userData.role === 'seller') {
+          const sellerNav = document.getElementById('sellerDashboardNav');
+          if (sellerNav) {
+            sellerNav.style.display = 'block';
+          }
+        }
         
         return true;
       } catch (error) {

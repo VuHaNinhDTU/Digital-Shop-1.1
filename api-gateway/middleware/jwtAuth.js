@@ -109,6 +109,15 @@ class JWTAuth {
         role: 'logistics',
         fullName: 'Logistics Manager',
         avatar: '/assets/images/logistics-avatar.png'
+      },
+      {
+        id: 'seller_001',
+        username: 'demo_seller',
+        password: 'seller123',
+        email: 'seller@demo.com',
+        role: 'seller',
+        fullName: 'Demo Seller',
+        avatar: '/assets/images/seller-avatar.png'
       }
     ];
   }

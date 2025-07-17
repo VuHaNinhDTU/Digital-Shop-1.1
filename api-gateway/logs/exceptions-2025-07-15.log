@@ -1,0 +1,93 @@
+{
+  error: Error: listen EADDRINUSE: address already in use :::3000
+      at Server.setupListenHandle [as _listen2] (node:net:1937:16)
+      at listenInCluster (node:net:1994:12)
+      at Server.listen (node:net:2099:7)
+      at startServer (C:\Users\MSI GF\OneDrive\Desktop\cho-nong-san-so\api-gateway\index.js:366:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5) {
+    code: 'EADDRINUSE',
+    errno: -4091,
+    syscall: 'listen',
+    address: '::',
+    port: 3000
+  },
+  level: 'error',
+  message: 'uncaughtException: listen EADDRINUSE: address already in use :::3000\n' +
+    'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n' +
+    '    at listenInCluster (node:net:1994:12)\n' +
+    '    at Server.listen (node:net:2099:7)\n' +
+    '    at startServer (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:366:12)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)',
+  stack: 'Error: listen EADDRINUSE: address already in use :::3000\n' +
+    '    at Server.setupListenHandle [as _listen2] (node:net:1937:16)\n' +
+    '    at listenInCluster (node:net:1994:12)\n' +
+    '    at Server.listen (node:net:2099:7)\n' +
+    '    at startServer (C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js:366:12)\n' +
+    '    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)',
+  exception: true,
+  date: 'Tue Jul 15 2025 18:53:58 GMT+0700 (Indochina Time)',
+  process: {
+    pid: 5804,
+    uid: null,
+    gid: null,
+    cwd: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway',
+    execPath: 'E:\\Coding Resource\\Node.js\\node.exe',
+    version: 'v22.13.0',
+    argv: [
+      'E:\\Coding Resource\\Node.js\\node.exe',
+      'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js'
+    ],
+    memoryUsage: {
+      rss: 133337088,
+      heapTotal: 87986176,
+      heapUsed: 49057720,
+      external: 40059229,
+      arrayBuffers: 36569678
+    }
+  },
+  os: { loadavg: [ 0, 0, 0 ], uptime: 2293 },
+  trace: [
+    {
+      column: 16,
+      file: 'node:net',
+      function: 'Server.setupListenHandle [as _listen2]',
+      line: 1937,
+      method: 'setupListenHandle [as _listen2]',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'node:net',
+      function: 'listenInCluster',
+      line: 1994,
+      method: null,
+      native: false
+    },
+    {
+      column: 7,
+      file: 'node:net',
+      function: 'Server.listen',
+      line: 2099,
+      method: 'listen',
+      native: false
+    },
+    {
+      column: 12,
+      file: 'C:\\Users\\MSI GF\\OneDrive\\Desktop\\cho-nong-san-so\\api-gateway\\index.js',
+      function: 'startServer',
+      line: 366,
+      method: null,
+      native: false
+    },
+    {
+      column: 5,
+      file: 'node:internal/process/task_queues',
+      function: 'process.processTicksAndRejections',
+      line: 105,
+      method: 'processTicksAndRejections',
+      native: false
+    }
+  ],
+  timestamp: '2025-07-15 18:53:58'
+}
